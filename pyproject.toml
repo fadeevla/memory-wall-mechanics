@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "duplicate-find"
+version = "0.1.0"
+description = "Hardware-aware benchmarking and analysis of the Find the Duplicate Number problem"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.24.0",
+    "numba>=0.58.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "matplotlib>=3.7.0",
+    "tabulate>=0.9.0",
+]
+
+[project.scripts]
+duplicate-benchmark = "duplicate_find.benchmark.runner:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

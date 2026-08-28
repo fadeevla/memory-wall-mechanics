@@ -1,8 +1,17 @@
 ## Usage
 ```bash
+# 1. Setup system runtime (HugePages, perf permissions, performance governor)
 sudo ./bench/01_setup_runtime.sh
-# Optionally ./bench/02_setup_grub_isolation.sh
-bench/run.sh
+
+# 2. (Optional) Setup isolated GRUB CPU cores
+# sudo ./bench/02_setup_grub_isolation.sh
+
+# 3. Run benchmark suite
+./bench/run.sh main.py --sizes 10 100000 1000000 10000000 100000000
+
+# 4. Profile hardware counters (dTLB misses, L1/L3 cache misses, IPC)
+./bench/run_perf.sh findDuplicate_floyd_numba 10000000
+./bench/run_perf.sh findDuplicate_bit_numba_prange 10000000
 ```
 
 ## Abstract
@@ -56,14 +65,29 @@ To bypass the memory wall, algorithms must prioritize strict sequential access p
 ```python
 @njit
 def findDuplicate_bit_optimal_numba(arr: np.ndarray) -> int:
-	N = len(arr)
+    N = len(arr) - 1
+    max_bit = 0
+    temp_n = N
+    while temp_n > 0:
+        max_bit += 1
+        temp_n >>= 1
+
     count_nums = np.zeros(max_bit, dtype=np.int32)
-    max_bit = math.ceil(mah.log2(N)) - 1 # max_bit=27 for N=10**8
-    for i in range(N):
+    for i in range(len(arr)):
         temp = arr[i]
         for bit in range(max_bit):
             count_nums[bit] += temp & 1
             temp >>= 1
+
+    duplicate = 0
+    for bit in range(max_bit):
+        period = 1 << (bit + 1)
+        half_period = 1 << bit
+        full_cycles = (N + 1) // period
+        remainder = (N + 1) % period
+        count_base = (full_cycles * half_period) + max(0, remainder - half_period)
+        if count_nums[bit] > count_base:
+            duplicate |= (1 << bit)
     return duplicate
 ```
 
@@ -81,19 +105,29 @@ Executing multi-threaded JIT kernels reveals the physical limits of motherboard 
 ```python
 @njit(parallel=True)
 def findDuplicate_bit_numba_prange(nums):
-    n = len(nums)
+    n = len(nums) - 1
+    max_num = n
+    max_bit = 0
+    while max_num > 0:
+        max_bit += 1
+        max_num >>= 1
+
     duplicate = 0
-    for bit in prange(32):
+    for bit in prange(max_bit):
         mask = 1 << bit
-        base_count = 0
+        period = 1 << (bit + 1)
+        half_period = 1 << bit
+        full_cycles = (n + 1) // period
+        remainder = (n + 1) % period
+        base_count = (full_cycles * half_period) + max(0, remainder - half_period)
+
         nums_count = 0
-        for i in range(n):
-            if i & mask:
-                base_count += 1
-            if nums[i] & mask:
+        for i in range(len(nums)):
+            if (nums[i] & mask) != 0:
                 nums_count += 1
+
         if nums_count > base_count:
-            duplicate |= mask
+            duplicate += mask
     return duplicate
 ```
 ### **Hardware Validation: ASUS FA507NV & Constructive Cache Sharing**

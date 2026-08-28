@@ -1,10 +1,10 @@
 #!/bin/bash
-# Запуск: sudo ./03_setup_grub_isolation.sh
+# Запуск: sudo ./bench/02_setup_grub_isolation.sh
 
 set -e
 
 if [[ $EUID -ne 0 ]]; then
-   echo "❌ Требуются права root" 
+   echo "❌ Требуются права root"
    exit 1
 fi
 
@@ -30,4 +30,4 @@ echo "🔄 Обновление GRUB..."
 update-grub
 
 echo "✅ Готово. Чтобы изменения вступили в силу, необходимо ПЕРЕЗАГРУЗИТЬ систему."
-echo "После перезагрузки используйте 02_run_benchmark.sh для запуска кода на изолированных ядрах."
+echo "После перезагрузки используйте bench/run.sh для запуска кода на изолированных ядрах."
