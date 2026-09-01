@@ -1,16 +1,16 @@
-#!/bin/bash
-# Запуск: ./bench/run.sh [SCRIPT_NAME]
+#!/usr/bin/env bash
+# Usage: CPU_SET=2,4 NUMBA_NUM_THREADS=2 ./bench/run.sh [SCRIPT] [ARGS...]
 
-SCRIPT_NAME=${1:-"main.py"} # По умолчанию запускаем main.py
-TARGET_CORE=${TARGET_CORE:-"10,8,6,4,2"}     # Логические ядра для NUMBA/процесса
+set -euo pipefail
 
-echo "🔬 Запуск бенчмарка в лабораторных условиях..."
-echo "📄 Скрипт: $SCRIPT_NAME"
-echo "🧠 Привязка к ядру (CPU Pinning): Cores $TARGET_CORE"
-echo "🛡️  Отключение ASLR: Включено"
+script_name=${1:-main.py}
+cpu_set=${CPU_SET:-}
+python_bin=${PYTHON_BIN:-python3}
+command=("$python_bin" "$script_name" "${@:2}")
 
-# setarch x86_64 -R: Отключает рандомизацию адресного пространства
-# taskset -c: Привязывает выполнение к конкретным ядрам
-# stdbuf -oL: Делает вывод в консоль немедленным (без буферизации)
-
-setarch x86_64 -R taskset -c $TARGET_CORE stdbuf -oL python3 "$SCRIPT_NAME" "${@:2}"
+echo "Running benchmark: script=$script_name cpus=${cpu_set:-current-affinity}"
+if [[ -n "$cpu_set" ]]; then
+    taskset -c "$cpu_set" "${command[@]}"
+else
+    "${command[@]}"
+fi

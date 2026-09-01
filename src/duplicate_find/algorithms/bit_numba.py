@@ -8,7 +8,8 @@ from numba import njit, prange
 def findDuplicate_bit_numba(arr: np.ndarray) -> int:
     """Sequential bit-counting using single-threaded Numba machine code.
 
-    Reads memory directly with hardware cache prefetching and branchless SIMD.
+    Reads packed memory sequentially. Whether LLVM vectorizes the loop is a
+    compiler and CPU question and should be checked from generated assembly.
     """
     n = len(arr) - 1
     duplicate = 0
@@ -41,11 +42,10 @@ def findDuplicate_bit_numba(arr: np.ndarray) -> int:
 
 @njit(parallel=True)
 def findDuplicate_bit_numba_prange(arr: np.ndarray) -> int:
-    """Parallel bit-counting across CPU threads using OpenMP/TBB work sharing.
+    """Parallel bit-counting using Numba's configured threading backend.
 
-    Each thread reads the full array sequentially for a subset of bits.
-    Constructive L3 cache sharing allows threads running in lockstep to reuse
-    cache lines loaded into L3 by leading threads.
+    Each worker scans the full array for a subset of bits. Cache reuse between
+    workers is a hypothesis to validate with CPU-specific hardware counters.
     """
     n = len(arr) - 1
 
@@ -73,7 +73,7 @@ def findDuplicate_bit_numba_prange(arr: np.ndarray) -> int:
                 nums_count += 1
 
         if nums_count > base_count:
-            # Safe parallel reduction via addition of non-overlapping bit powers
+            # Numba recognizes += as a scalar reduction across prange workers.
             duplicate += mask
 
     return duplicate
@@ -120,8 +120,8 @@ def findDuplicate_bit_optimal_numba(arr: np.ndarray) -> int:
 def findDuplicate_floyd_numba(arr: np.ndarray) -> int:
     """Floyd's algorithm compiled with Numba (No-Python mode).
 
-    Eliminates CPython interpreter loop overhead, directly exposing hardware
-    TLB and cache miss latency from pointer chasing.
+    Eliminates CPython interpreter loop overhead so dependent memory access is
+    more visible; counters are still required to attribute individual stalls.
     """
     slow = arr[0]
     fast = arr[0]

@@ -1,0 +1,7 @@
+# Published embedding environment. The recorded PyTorch wheel is the CUDA 12.4
+# build, although the benchmark itself is CPU-only.
+--extra-index-url https://download.pytorch.org/whl/cu124
+numpy==1.26.4
+numba==0.67.0
+llvmlite==0.49.0
+torch==2.5.1+cu124

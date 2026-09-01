@@ -7,7 +7,8 @@ import numpy as np
 def findDuplicate_bit_numpy(nums: Sequence[int]) -> int:
     """NumPy loop-over-bits implementation with C-speed inner summation.
 
-    Time: O(N log M), Space: O(1) beyond the input array representation.
+    Time: O(N log M), Peak extra space: O(N). Each vectorized expression
+    materializes temporary arrays, which is intentionally measured here.
     """
     if not isinstance(nums, np.ndarray):
         arr = np.array(nums, dtype=np.uint32)

@@ -1,0 +1,7 @@
+# Published controlled duplicate-finding and compiler-evidence environment.
+# Install with Python 3.10.12 and:
+#   python -m pip install -c constraints/controlled-python310.txt -e '.[dev]'
+numpy==2.2.6
+numba==0.67.0
+llvmlite==0.49.0
+pytest==9.1.1

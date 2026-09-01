@@ -1,0 +1,960 @@
+{
+  "schema_version": 2,
+  "configuration": {
+    "rows": 100000,
+    "dimension": 128,
+    "bags": 256,
+    "bag_size": 128,
+    "repeats": 3,
+    "order_seed": 777,
+    "data_seeds": [
+      101,
+      202,
+      303,
+      404,
+      505,
+      606,
+      707,
+      808,
+      909,
+      1010,
+      1111,
+      1212,
+      1313,
+      1414,
+      1515
+    ],
+    "locality": "sorted-within-bag",
+    "skip_python": false,
+    "skip_torch": false,
+    "torch_threads": 1,
+    "cache_flush_mib": 64,
+    "json": "results/ryzen-7535hs-python310-embedding-sorted.json"
+  },
+  "environment": {
+    "python": "3.10.12",
+    "implementation": "CPython",
+    "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.35",
+    "machine": "x86_64",
+    "processor": "AMD Ryzen 5 7535HS with Radeon Graphics",
+    "logical_cpu_count": 12,
+    "memory_total_kib": 32084196,
+    "cache_hierarchy_cpu0": [
+      {
+        "level": "1",
+        "type": "Data",
+        "size": "32K"
+      },
+      {
+        "level": "1",
+        "type": "Instruction",
+        "size": "32K"
+      },
+      {
+        "level": "2",
+        "type": "Unified",
+        "size": "512K"
+      },
+      {
+        "level": "3",
+        "type": "Unified",
+        "size": "16384K"
+      }
+    ],
+    "numpy": "1.26.4",
+    "numba": "0.67.0",
+    "llvmlite": "0.49.0",
+    "numba_threads": 1,
+    "numba_threading_layer": "not initialized",
+    "cpu_affinity": [
+      2
+    ],
+    "affinity_topology": [
+      {
+        "logical_cpu": 2,
+        "core_id": 1,
+        "package_id": 0
+      }
+    ],
+    "torch": "2.5.1+cu124"
+  },
+  "table_bytes": 51200000,
+  "gathered_tensor_bytes": 16777216,
+  "execution_order": {
+    "101": [
+      [
+        "numpy_gather_reduce",
+        "python_loops",
+        "torch_embedding_bag",
+        "numba_fused"
+      ],
+      [
+        "numpy_gather_reduce",
+        "numba_fused",
+        "torch_embedding_bag",
+        "python_loops"
+      ],
+      [
+        "numba_fused",
+        "numpy_gather_reduce",
+        "torch_embedding_bag",
+        "python_loops"
+      ]
+    ],
+    "202": [
+      [
+        "numpy_gather_reduce",
+        "numba_fused",
+        "python_loops",
+        "torch_embedding_bag"
+      ],
+      [
+        "numba_fused",
+        "torch_embedding_bag",
+        "numpy_gather_reduce",
+        "python_loops"
+      ],
+      [
+        "python_loops",
+        "torch_embedding_bag",
+        "numba_fused",
+        "numpy_gather_reduce"
+      ]
+    ],
+    "303": [
+      [
+        "torch_embedding_bag",
+        "numba_fused",
+        "python_loops",
+        "numpy_gather_reduce"
+      ],
+      [
+        "numpy_gather_reduce",
+        "numba_fused",
+        "torch_embedding_bag",
+        "python_loops"
+      ],
+      [
+        "numba_fused",
+        "torch_embedding_bag",
+        "python_loops",
+        "numpy_gather_reduce"
+      ]
+    ],
+    "404": [
+      [
+        "numba_fused",
+        "numpy_gather_reduce",
+        "torch_embedding_bag",
+        "python_loops"
+      ],
+      [
+        "numba_fused",
+        "numpy_gather_reduce",
+        "python_loops",
+        "torch_embedding_bag"
+      ],
+      [
+        "numba_fused",
+        "numpy_gather_reduce",
+        "torch_embedding_bag",
+        "python_loops"
+      ]
+    ],
+    "505": [
+      [
+        "torch_embedding_bag",
+        "numba_fused",
+        "python_loops",
+        "numpy_gather_reduce"
+      ],
+      [
+        "python_loops",
+        "numba_fused",
+        "numpy_gather_reduce",
+        "torch_embedding_bag"
+      ],
+      [
+        "python_loops",
+        "torch_embedding_bag",
+        "numpy_gather_reduce",
+        "numba_fused"
+      ]
+    ],
+    "606": [
+      [
+        "torch_embedding_bag",
+        "numba_fused",
+        "numpy_gather_reduce",
+        "python_loops"
+      ],
+      [
+        "python_loops",
+        "torch_embedding_bag",
+        "numba_fused",
+        "numpy_gather_reduce"
+      ],
+      [
+        "numba_fused",
+        "numpy_gather_reduce",
+        "python_loops",
+        "torch_embedding_bag"
+      ]
+    ],
+    "707": [
+      [
+        "numpy_gather_reduce",
+        "numba_fused",
+        "python_loops",
+        "torch_embedding_bag"
+      ],
+      [
+        "numba_fused",
+        "torch_embedding_bag",
+        "numpy_gather_reduce",
+        "python_loops"
+      ],
+      [
+        "torch_embedding_bag",
+        "python_loops",
+        "numpy_gather_reduce",
+        "numba_fused"
+      ]
+    ],
+    "808": [
+      [
+        "torch_embedding_bag",
+        "python_loops",
+        "numba_fused",
+        "numpy_gather_reduce"
+      ],
+      [
+        "numba_fused",
+        "torch_embedding_bag",
+        "numpy_gather_reduce",
+        "python_loops"
+      ],
+      [
+        "torch_embedding_bag",
+        "numba_fused",
+        "python_loops",
+        "numpy_gather_reduce"
+      ]
+    ],
+    "909": [
+      [
+        "python_loops",
+        "numba_fused",
+        "numpy_gather_reduce",
+        "torch_embedding_bag"
+      ],
+      [
+        "numpy_gather_reduce",
+        "python_loops",
+        "numba_fused",
+        "torch_embedding_bag"
+      ],
+      [
+        "numpy_gather_reduce",
+        "python_loops",
+        "numba_fused",
+        "torch_embedding_bag"
+      ]
+    ],
+    "1010": [
+      [
+        "numba_fused",
+        "torch_embedding_bag",
+        "python_loops",
+        "numpy_gather_reduce"
+      ],
+      [
+        "numpy_gather_reduce",
+        "torch_embedding_bag",
+        "numba_fused",
+        "python_loops"
+      ],
+      [
+        "numpy_gather_reduce",
+        "torch_embedding_bag",
+        "python_loops",
+        "numba_fused"
+      ]
+    ],
+    "1111": [
+      [
+        "numpy_gather_reduce",
+        "numba_fused",
+        "python_loops",
+        "torch_embedding_bag"
+      ],
+      [
+        "torch_embedding_bag",
+        "python_loops",
+        "numba_fused",
+        "numpy_gather_reduce"
+      ],
+      [
+        "numpy_gather_reduce",
+        "numba_fused",
+        "torch_embedding_bag",
+        "python_loops"
+      ]
+    ],
+    "1212": [
+      [
+        "python_loops",
+        "torch_embedding_bag",
+        "numpy_gather_reduce",
+        "numba_fused"
+      ],
+      [
+        "torch_embedding_bag",
+        "python_loops",
+        "numba_fused",
+        "numpy_gather_reduce"
+      ],
+      [
+        "torch_embedding_bag",
+        "numpy_gather_reduce",
+        "numba_fused",
+        "python_loops"
+      ]
+    ],
+    "1313": [
+      [
+        "numba_fused",
+        "numpy_gather_reduce",
+        "python_loops",
+        "torch_embedding_bag"
+      ],
+      [
+        "python_loops",
+        "torch_embedding_bag",
+        "numba_fused",
+        "numpy_gather_reduce"
+      ],
+      [
+        "torch_embedding_bag",
+        "numba_fused",
+        "numpy_gather_reduce",
+        "python_loops"
+      ]
+    ],
+    "1414": [
+      [
+        "torch_embedding_bag",
+        "numpy_gather_reduce",
+        "python_loops",
+        "numba_fused"
+      ],
+      [
+        "torch_embedding_bag",
+        "numba_fused",
+        "python_loops",
+        "numpy_gather_reduce"
+      ],
+      [
+        "numpy_gather_reduce",
+        "numba_fused",
+        "python_loops",
+        "torch_embedding_bag"
+      ]
+    ],
+    "1515": [
+      [
+        "numba_fused",
+        "python_loops",
+        "numpy_gather_reduce",
+        "torch_embedding_bag"
+      ],
+      [
+        "python_loops",
+        "numpy_gather_reduce",
+        "torch_embedding_bag",
+        "numba_fused"
+      ],
+      [
+        "numpy_gather_reduce",
+        "python_loops",
+        "torch_embedding_bag",
+        "numba_fused"
+      ]
+    ]
+  },
+  "cache_conditioning": {
+    "method": "best-effort sequential flush-buffer read before each timed call",
+    "flush_buffer_mib": 64,
+    "guarantees_cold_cache": false
+  },
+  "measurements": {
+    "numpy_gather_reduce": {
+      "sample_groups": [
+        {
+          "data_seed": 101,
+          "samples_ms": [
+            13.901148,
+            13.46665,
+            13.48274
+          ]
+        },
+        {
+          "data_seed": 202,
+          "samples_ms": [
+            13.878925,
+            13.225215,
+            13.23886
+          ]
+        },
+        {
+          "data_seed": 303,
+          "samples_ms": [
+            13.358425,
+            12.979111,
+            12.473219
+          ]
+        },
+        {
+          "data_seed": 404,
+          "samples_ms": [
+            13.238629,
+            13.092915,
+            13.10134
+          ]
+        },
+        {
+          "data_seed": 505,
+          "samples_ms": [
+            12.328927,
+            12.623491,
+            13.540174
+          ]
+        },
+        {
+          "data_seed": 606,
+          "samples_ms": [
+            12.232905,
+            12.592211,
+            12.644038
+          ]
+        },
+        {
+          "data_seed": 707,
+          "samples_ms": [
+            12.92154,
+            12.939634,
+            13.762771
+          ]
+        },
+        {
+          "data_seed": 808,
+          "samples_ms": [
+            13.170097,
+            13.074687,
+            12.837771
+          ]
+        },
+        {
+          "data_seed": 909,
+          "samples_ms": [
+            12.869481,
+            13.025003,
+            12.658393
+          ]
+        },
+        {
+          "data_seed": 1010,
+          "samples_ms": [
+            13.410917,
+            13.782266,
+            12.854511
+          ]
+        },
+        {
+          "data_seed": 1111,
+          "samples_ms": [
+            12.196905,
+            13.052133,
+            14.029901
+          ]
+        },
+        {
+          "data_seed": 1212,
+          "samples_ms": [
+            12.73705,
+            11.500073,
+            12.298996
+          ]
+        },
+        {
+          "data_seed": 1313,
+          "samples_ms": [
+            11.710158,
+            13.438227,
+            11.64749
+          ]
+        },
+        {
+          "data_seed": 1414,
+          "samples_ms": [
+            13.63193,
+            13.846403,
+            13.370799
+          ]
+        },
+        {
+          "data_seed": 1515,
+          "samples_ms": [
+            12.874797,
+            13.028185,
+            13.21737
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 11.710158,
+        "median_ms": 13.028185,
+        "mean_ms": 12.9355916,
+        "p95_ms": 13.527497,
+        "stdev_ms": 0.4854805699240996,
+        "median_ci95_low_ms": 12.623491,
+        "median_ci95_high_ms": 13.104777999999982,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 13.052133
+      },
+      "confidence_unit": "per-data-seed median",
+      "numerical_error_vs_float64": {
+        "max_abs": 1.5412457287311554e-05,
+        "max_rel": 0.004675917126021669
+      }
+    },
+    "numba_fused": {
+      "sample_groups": [
+        {
+          "data_seed": 101,
+          "samples_ms": [
+            1.795527,
+            1.821496,
+            1.9085
+          ]
+        },
+        {
+          "data_seed": 202,
+          "samples_ms": [
+            1.810436,
+            1.865729,
+            1.810445
+          ]
+        },
+        {
+          "data_seed": 303,
+          "samples_ms": [
+            1.901245,
+            1.835463,
+            2.460598
+          ]
+        },
+        {
+          "data_seed": 404,
+          "samples_ms": [
+            1.753187,
+            1.91427,
+            1.877461
+          ]
+        },
+        {
+          "data_seed": 505,
+          "samples_ms": [
+            1.964474,
+            2.029637,
+            2.042892
+          ]
+        },
+        {
+          "data_seed": 606,
+          "samples_ms": [
+            2.370418,
+            2.137179,
+            2.349599
+          ]
+        },
+        {
+          "data_seed": 707,
+          "samples_ms": [
+            1.995503,
+            1.850931,
+            1.963001
+          ]
+        },
+        {
+          "data_seed": 808,
+          "samples_ms": [
+            1.874064,
+            2.247647,
+            1.798552
+          ]
+        },
+        {
+          "data_seed": 909,
+          "samples_ms": [
+            1.732598,
+            1.854467,
+            1.759388
+          ]
+        },
+        {
+          "data_seed": 1010,
+          "samples_ms": [
+            2.049544,
+            2.115107,
+            1.805756
+          ]
+        },
+        {
+          "data_seed": 1111,
+          "samples_ms": [
+            2.495772,
+            1.801056,
+            1.774577
+          ]
+        },
+        {
+          "data_seed": 1212,
+          "samples_ms": [
+            1.810965,
+            2.237527,
+            1.943003
+          ]
+        },
+        {
+          "data_seed": 1313,
+          "samples_ms": [
+            2.428366,
+            1.820603,
+            2.331023
+          ]
+        },
+        {
+          "data_seed": 1414,
+          "samples_ms": [
+            2.197131,
+            1.748026,
+            1.919429
+          ]
+        },
+        {
+          "data_seed": 1515,
+          "samples_ms": [
+            2.013235,
+            2.025228,
+            1.873913
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 1.759388,
+        "median_ms": 1.919429,
+        "mean_ms": 1.9629084,
+        "p95_ms": 2.3365958,
+        "stdev_ms": 0.17559534219652378,
+        "median_ci95_low_ms": 1.821496,
+        "median_ci95_high_ms": 2.013235,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 1.9085
+      },
+      "confidence_unit": "per-data-seed median",
+      "numerical_error_vs_float64": {
+        "max_abs": 2.1750573068857193e-05,
+        "max_rel": 0.03230247778218655
+      }
+    },
+    "python_loops": {
+      "sample_groups": [
+        {
+          "data_seed": 101,
+          "samples_ms": [
+            995.895685,
+            1015.417975,
+            1028.677996
+          ]
+        },
+        {
+          "data_seed": 202,
+          "samples_ms": [
+            1041.793753,
+            1016.117899,
+            1012.564487
+          ]
+        },
+        {
+          "data_seed": 303,
+          "samples_ms": [
+            1036.042152,
+            1039.951202,
+            1028.707166
+          ]
+        },
+        {
+          "data_seed": 404,
+          "samples_ms": [
+            1028.214025,
+            1029.978694,
+            1060.892204
+          ]
+        },
+        {
+          "data_seed": 505,
+          "samples_ms": [
+            1022.796604,
+            1018.878055,
+            1034.301051
+          ]
+        },
+        {
+          "data_seed": 606,
+          "samples_ms": [
+            1041.188069,
+            1028.226684,
+            1024.747441
+          ]
+        },
+        {
+          "data_seed": 707,
+          "samples_ms": [
+            1029.75674,
+            1039.656907,
+            1040.147851
+          ]
+        },
+        {
+          "data_seed": 808,
+          "samples_ms": [
+            1028.658654,
+            1020.556808,
+            998.795497
+          ]
+        },
+        {
+          "data_seed": 909,
+          "samples_ms": [
+            1012.371797,
+            1005.127024,
+            1017.342766
+          ]
+        },
+        {
+          "data_seed": 1010,
+          "samples_ms": [
+            1022.501175,
+            1001.170787,
+            1028.65032
+          ]
+        },
+        {
+          "data_seed": 1111,
+          "samples_ms": [
+            1038.226045,
+            1029.359022,
+            1016.13678
+          ]
+        },
+        {
+          "data_seed": 1212,
+          "samples_ms": [
+            1011.904122,
+            1005.233331,
+            1012.330265
+          ]
+        },
+        {
+          "data_seed": 1313,
+          "samples_ms": [
+            1002.553042,
+            1022.975814,
+            1048.331057
+          ]
+        },
+        {
+          "data_seed": 1414,
+          "samples_ms": [
+            1059.041322,
+            1035.613124,
+            1009.528633
+          ]
+        },
+        {
+          "data_seed": 1515,
+          "samples_ms": [
+            1007.709804,
+            1024.336886,
+            1026.198217
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 1011.904122,
+        "median_ms": 1022.975814,
+        "mean_ms": 1024.5237108666668,
+        "p95_ms": 1037.1265785,
+        "stdev_ms": 8.607505729693749,
+        "median_ci95_low_ms": 1016.117899,
+        "median_ci95_high_ms": 1029.3745138,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 1024.747441
+      },
+      "confidence_unit": "per-data-seed median",
+      "numerical_error_vs_float64": {
+        "max_abs": 2.1750573068857193e-05,
+        "max_rel": 0.03230247778218655
+      }
+    },
+    "torch_embedding_bag": {
+      "sample_groups": [
+        {
+          "data_seed": 101,
+          "samples_ms": [
+            1.309052,
+            1.202572,
+            1.263196
+          ]
+        },
+        {
+          "data_seed": 202,
+          "samples_ms": [
+            1.268466,
+            1.21738,
+            1.298162
+          ]
+        },
+        {
+          "data_seed": 303,
+          "samples_ms": [
+            1.676995,
+            1.299594,
+            1.759439
+          ]
+        },
+        {
+          "data_seed": 404,
+          "samples_ms": [
+            1.324441,
+            1.666514,
+            1.32892
+          ]
+        },
+        {
+          "data_seed": 505,
+          "samples_ms": [
+            1.31327,
+            1.588598,
+            1.279957
+          ]
+        },
+        {
+          "data_seed": 606,
+          "samples_ms": [
+            1.474654,
+            1.610158,
+            1.296038
+          ]
+        },
+        {
+          "data_seed": 707,
+          "samples_ms": [
+            1.516612,
+            1.309523,
+            1.287401
+          ]
+        },
+        {
+          "data_seed": 808,
+          "samples_ms": [
+            1.570333,
+            1.637479,
+            1.45164
+          ]
+        },
+        {
+          "data_seed": 909,
+          "samples_ms": [
+            1.302719,
+            1.267033,
+            1.218912
+          ]
+        },
+        {
+          "data_seed": 1010,
+          "samples_ms": [
+            1.237407,
+            1.387028,
+            1.308871
+          ]
+        },
+        {
+          "data_seed": 1111,
+          "samples_ms": [
+            1.363253,
+            1.250702,
+            1.259018
+          ]
+        },
+        {
+          "data_seed": 1212,
+          "samples_ms": [
+            1.275799,
+            1.220956,
+            1.8829
+          ]
+        },
+        {
+          "data_seed": 1313,
+          "samples_ms": [
+            1.721487,
+            1.270589,
+            1.281329
+          ]
+        },
+        {
+          "data_seed": 1414,
+          "samples_ms": [
+            1.295747,
+            1.329089,
+            1.849948
+          ]
+        },
+        {
+          "data_seed": 1515,
+          "samples_ms": [
+            1.717318,
+            1.418767,
+            1.669038
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 1.259018,
+        "median_ms": 1.309523,
+        "mean_ms": 1.3730356000000001,
+        "p95_ms": 1.6714251,
+        "stdev_ms": 0.1487958390551103,
+        "median_ci95_low_ms": 1.268466,
+        "median_ci95_high_ms": 1.474654,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 1.309523
+      },
+      "confidence_unit": "per-data-seed median",
+      "numerical_error_vs_float64": {
+        "max_abs": 2.1750573068857193e-05,
+        "max_rel": 0.03230247778218655
+      }
+    }
+  }
+}

@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "configuration": {
+    "object_length": 10000,
+    "memory_length": 500000,
+    "python_length": 1000000,
+    "native_length": 10000000,
+    "repeats": 7,
+    "numba_threads": 2,
+    "json": "results/ryzen-7535hs-python-runtime.json",
+    "markdown": "docs/python-runtime-report.md"
+  },
+  "environment": {
+    "python": "3.10.12",
+    "implementation": "CPython",
+    "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.35",
+    "machine": "x86_64",
+    "processor": "AMD Ryzen 5 7535HS with Radeon Graphics",
+    "logical_cpu_count": 12,
+    "memory_total_kib": 32084196,
+    "cache_hierarchy_cpu0": [
+      {
+        "level": "1",
+        "type": "Data",
+        "size": "32K"
+      },
+      {
+        "level": "1",
+        "type": "Instruction",
+        "size": "32K"
+      },
+      {
+        "level": "2",
+        "type": "Unified",
+        "size": "512K"
+      },
+      {
+        "level": "3",
+        "type": "Unified",
+        "size": "16384K"
+      }
+    ],
+    "numpy": "2.2.6",
+    "numba": "0.67.0",
+    "numba_threads": 2,
+    "numba_threading_layer": "not initialized",
+    "cpu_affinity": [
+      2,
+      4
+    ],
+    "affinity_topology": [
+      {
+        "logical_cpu": 2,
+        "core_id": 1,
+        "package_id": 0
+      },
+      {
+        "logical_cpu": 4,
+        "core_id": 2,
+        "package_id": 0
+      }
+    ]
+  },
+  "python_loop_disassembly": " 28           0 LOAD_CONST               1 (0)\n              2 STORE_FAST               1 (total)\n\n 29           4 LOAD_FAST                0 (values)\n              6 GET_ITER\n        >>    8 FOR_ITER                 8 (to 26)\n             10 STORE_FAST               2 (value)\n\n 30          12 LOAD_FAST                1 (total)\n             14 LOAD_FAST                2 (value)\n             16 LOAD_CONST               2 (1)\n             18 BINARY_AND\n             20 INPLACE_ADD\n             22 STORE_FAST               1 (total)\n             24 JUMP_ABSOLUTE            4 (to 8)\n\n 31     >>   26 LOAD_FAST                1 (total)\n             28 RETURN_VALUE\n",
+  "representation_metadata": {
+    "length": 10000,
+    "python_int_zero_bytes": 24,
+    "python_int_large_bytes": 40,
+    "list_shallow_bytes": 80056,
+    "list_deep_bytes": 360052,
+    "ndarray": {
+      "dtype": "int32",
+      "itemsize": 4,
+      "shape": [
+        10000
+      ],
+      "strides": [
+        4
+      ],
+      "nbytes": 40000,
+      "sys_getsizeof_bytes": 40112,
+      "c_contiguous": true
+    },
+    "strided_view": {
+      "shape": [
+        5000
+      ],
+      "strides": [
+        8
+      ],
+      "nbytes": 20000,
+      "sys_getsizeof_bytes": 112,
+      "c_contiguous": false,
+      "shares_memory": true
+    }
+  },
+  "memory_measurements": [
+    {
+      "representation": "python.list[int]",
+      "length": 500000,
+      "sys_getsizeof_bytes": 4000056,
+      "tracemalloc_current_bytes": 17992860,
+      "tracemalloc_peak_bytes": 17992984,
+      "rss_before_kib": 97732,
+      "rss_after_kib": 117324,
+      "rss_increment_kib": 19592,
+      "measurement_design": "tracemalloc and RSS were collected in separate fresh workers to keep tracemalloc bookkeeping out of the RSS delta"
+    },
+    {
+      "representation": "numpy.int32",
+      "length": 500000,
+      "sys_getsizeof_bytes": 2000112,
+      "tracemalloc_current_bytes": 2000136,
+      "tracemalloc_peak_bytes": 2000136,
+      "rss_before_kib": 97960,
+      "rss_after_kib": 99920,
+      "rss_increment_kib": 1960,
+      "measurement_design": "tracemalloc and RSS were collected in separate fresh workers to keep tracemalloc bookkeeping out of the RSS delta"
+    }
+  ],
+  "concurrency": {
+    "python_length_per_task": 1000000,
+    "native_length": 10000000,
+    "numba_threads": 2,
+    "execution_order": [
+      [
+        "python_threads_two_tasks",
+        "python_sequential_two_tasks",
+        "numba_serial_one_task",
+        "numba_parallel_one_task"
+      ],
+      [
+        "numba_parallel_one_task",
+        "python_sequential_two_tasks",
+        "python_threads_two_tasks",
+        "numba_serial_one_task"
+      ],
+      [
+        "python_sequential_two_tasks",
+        "python_threads_two_tasks",
+        "numba_parallel_one_task",
+        "numba_serial_one_task"
+      ],
+      [
+        "numba_serial_one_task",
+        "python_sequential_two_tasks",
+        "numba_parallel_one_task",
+        "python_threads_two_tasks"
+      ],
+      [
+        "numba_serial_one_task",
+        "python_sequential_two_tasks",
+        "python_threads_two_tasks",
+        "numba_parallel_one_task"
+      ],
+      [
+        "numba_serial_one_task",
+        "python_sequential_two_tasks",
+        "numba_parallel_one_task",
+        "python_threads_two_tasks"
+      ],
+      [
+        "python_threads_two_tasks",
+        "python_sequential_two_tasks",
+        "numba_serial_one_task",
+        "numba_parallel_one_task"
+      ]
+    ],
+    "measurements": {
+      "python_sequential_two_tasks": {
+        "samples_ms": [
+          66.296298,
+          71.442284,
+          68.521562,
+          68.330022,
+          68.617984,
+          69.850351,
+          68.158138
+        ],
+        "statistics": {
+          "count": 7,
+          "min_ms": 66.296298,
+          "median_ms": 68.521562,
+          "mean_ms": 68.74523414285714,
+          "p95_ms": 70.9647041,
+          "stdev_ms": 1.5851369164065348,
+          "median_ci95_low_ms": 68.158138,
+          "median_ci95_high_ms": 69.850351,
+          "confidence_unit_count": 7
+        }
+      },
+      "python_threads_two_tasks": {
+        "samples_ms": [
+          70.445059,
+          77.518959,
+          77.13134,
+          72.1216,
+          81.075205,
+          73.649093,
+          74.523937
+        ],
+        "statistics": {
+          "count": 7,
+          "min_ms": 70.445059,
+          "median_ms": 74.523937,
+          "mean_ms": 75.20931328571429,
+          "p95_ms": 80.0083312,
+          "stdev_ms": 3.6187810066920174,
+          "median_ci95_low_ms": 72.1216,
+          "median_ci95_high_ms": 77.518959,
+          "confidence_unit_count": 7
+        }
+      },
+      "numba_serial_one_task": {
+        "samples_ms": [
+          1.490943,
+          1.852683,
+          1.472067,
+          1.387429,
+          1.756463,
+          1.466477,
+          1.93073
+        ],
+        "statistics": {
+          "count": 7,
+          "min_ms": 1.387429,
+          "median_ms": 1.490943,
+          "mean_ms": 1.6223988571428571,
+          "p95_ms": 1.9073159,
+          "stdev_ms": 0.21812643254805886,
+          "median_ci95_low_ms": 1.466477,
+          "median_ci95_high_ms": 1.852683,
+          "confidence_unit_count": 7
+        }
+      },
+      "numba_parallel_one_task": {
+        "samples_ms": [
+          1.148749,
+          0.899251,
+          1.476596,
+          1.513185,
+          1.226356,
+          1.301938,
+          1.025628
+        ],
+        "statistics": {
+          "count": 7,
+          "min_ms": 0.899251,
+          "median_ms": 1.226356,
+          "mean_ms": 1.2273861428571429,
+          "p95_ms": 1.5022083,
+          "stdev_ms": 0.22505865926570387,
+          "median_ci95_low_ms": 1.025628,
+          "median_ci95_high_ms": 1.476596,
+          "confidence_unit_count": 7
+        }
+      }
+    },
+    "python_thread_speedup": 0.9194570866539163,
+    "numba_parallel_speedup": 1.215750565088767,
+    "comparison_boundary": "Python speedup compares two equal tasks sequentially versus in two Python threads. Numba speedup compares equivalent serial and prange native reductions; absolute Python and Numba latencies are not compared because representations and task counts differ."
+  }
+}

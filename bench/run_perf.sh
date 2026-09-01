@@ -1,32 +1,27 @@
-#!/bin/bash
-# Запуск: ./bench/run_perf.sh [ALGORITHM] [N]
-# Пример: ./bench/run_perf.sh findDuplicate_floyd_numba 10000000
+#!/usr/bin/env bash
+# Usage: CPU_SET=2 NUMBA_NUM_THREADS=1 ./bench/run_perf.sh ALGORITHM N REPEATS
 
-set -e
+set -euo pipefail
 
-ALGO=${1:-"findDuplicate_floyd_numba"}
-N=${2:-"10000000"}
-TARGET_CORE=${3:-"2"}
+algorithm=${1:-findDuplicate_floyd_numba}
+n=${2:-10000000}
+repeats=${3:-5}
+cpu_set=${CPU_SET:-}
+events=${PERF_EVENTS:-cycles,instructions,cache-references,cache-misses,L1-dcache-loads,L1-dcache-load-misses,dTLB-loads,dTLB-load-misses}
+output=${PERF_OUTPUT:-}
+python_bin=${PYTHON_BIN:-python3}
 
-echo "📊 Профилирование аппаратных счетчиков с помощью perf stat..."
-echo "🔹 Алгоритм: $ALGO"
-echo "🔹 Размер N: $N"
-echo "🔹 Ядро: $TARGET_CORE"
+args=("$algorithm" "$n" --repeats "$repeats" --events "$events")
+if [[ -n "$cpu_set" ]]; then
+    args+=(--cpus "$cpu_set")
+fi
+if [[ -n "$output" ]]; then
+    args+=(--output "$output")
+fi
 
-PERF_EVENTS="cycles,instructions,cache-references,cache-misses,L1-dcache-loads,L1-dcache-load-misses,dTLB-loads,dTLB-load-misses"
-
-taskset -c "$TARGET_CORE" perf stat -e "$PERF_EVENTS" python3 -c "
-import numpy as np, random, sys, os
-sys.path.insert(0, os.path.abspath('src'))
-from duplicate_find.algorithms import ALGORITHMS, warmup_numba_kernels
-
-warmup_numba_kernels()
-n = int($N)
-arr = list(range(1, n + 1)) + [n]
-random.shuffle(arr)
-data = np.array(arr, dtype=np.int32)
-
-func = ALGORITHMS['$ALGO']
-res = func(data)
-print(f'Done. Result: {res}')
-"
+echo "Profiling only the warmed algorithm region"
+echo "algorithm=$algorithm n=$n repeats=$repeats cpus=${cpu_set:-current-affinity}"
+if [[ -n "$output" ]]; then
+    echo "perf_csv=$output metadata=${output}.metadata.json"
+fi
+"$python_bin" bench/profile_target.py "${args[@]}"

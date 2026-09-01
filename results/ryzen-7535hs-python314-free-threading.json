@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "configuration": {
+    "interpreters": [
+      "python3.14",
+      "python3.14t"
+    ],
+    "length": 2000000,
+    "repeats": 9,
+    "json": "results/ryzen-7535hs-python314-free-threading.json",
+    "markdown": "docs/python314-free-threading.md"
+  },
+  "interpreters": [
+    {
+      "python_version": "3.14.6",
+      "python_build": "3.14.6 (main, Jun 11 2026, 12:32:48) [GCC 11.4.0]",
+      "python_build_tuple": [
+        "main",
+        "Jun 11 2026 12:32:48"
+      ],
+      "python_compiler": "GCC 11.4.0",
+      "python_abiflags": "",
+      "python_config_args": "'--enable-shared' '--prefix=/usr' '--libdir=/usr/lib/x86_64-linux-gnu' '--enable-ipv6' '--enable-loadable-sqlite-extensions' '--with-dbmliborder=bdb:gdbm' '--with-computed-gotos' '--without-ensurepip' '--with-system-expat' '--with-system-libmpdec=no' 'MKDIR_P=/bin/mkdir -p' 'CC=x86_64-linux-gnu-gcc' 'CFLAGS=-g       -fstack-protector-strong -Wformat -Werror=format-security ' 'LDFLAGS=-Wl,-Bsymbolic-functions      -g -fwrapv -O2   ' 'CPPFLAGS=-Wdate-time -D_FORTIFY_SOURCE=2'",
+      "executable": "/usr/bin/python3.14",
+      "executable_sha256": "010ca8fa28184a950bd2c667bf947c64fa556d6ebd67991d352bf39b9515dbbe",
+      "implementation": "CPython",
+      "gil_enabled_at_runtime": true,
+      "py_gil_disabled_build": false,
+      "python_int_zero_bytes": 28,
+      "cpu_affinity": [
+        2,
+        4
+      ],
+      "affinity_topology": [
+        {
+          "logical_cpu": 2,
+          "core_id": 1,
+          "package_id": 0
+        },
+        {
+          "logical_cpu": 4,
+          "core_id": 2,
+          "package_id": 0
+        }
+      ],
+      "length_per_task": 2000000,
+      "repeats": 9,
+      "execution_order": [
+        [
+          "two_tasks_threads",
+          "one_task",
+          "two_tasks_sequential"
+        ],
+        [
+          "one_task",
+          "two_tasks_threads",
+          "two_tasks_sequential"
+        ],
+        [
+          "two_tasks_threads",
+          "two_tasks_sequential",
+          "one_task"
+        ],
+        [
+          "one_task",
+          "two_tasks_sequential",
+          "two_tasks_threads"
+        ],
+        [
+          "two_tasks_threads",
+          "two_tasks_sequential",
+          "one_task"
+        ],
+        [
+          "two_tasks_threads",
+          "two_tasks_sequential",
+          "one_task"
+        ],
+        [
+          "two_tasks_threads",
+          "one_task",
+          "two_tasks_sequential"
+        ],
+        [
+          "two_tasks_sequential",
+          "one_task",
+          "two_tasks_threads"
+        ],
+        [
+          "two_tasks_threads",
+          "one_task",
+          "two_tasks_sequential"
+        ]
+      ],
+      "measurements": {
+        "one_task": {
+          "samples_ms": [
+            39.764266,
+            39.433933,
+            39.931741,
+            41.795416,
+            38.959548,
+            38.876992,
+            40.188916,
+            41.822578,
+            40.503067
+          ],
+          "statistics": {
+            "count": 9,
+            "min_ms": 38.876992,
+            "median_ms": 39.931741,
+            "mean_ms": 40.141828555555556,
+            "stdev_ms": 1.0826694889739106
+          }
+        },
+        "two_tasks_sequential": {
+          "samples_ms": [
+            78.878326,
+            80.429893,
+            83.306648,
+            82.800622,
+            80.022392,
+            78.432193,
+            77.377634,
+            78.284294,
+            78.650242
+          ],
+          "statistics": {
+            "count": 9,
+            "min_ms": 77.377634,
+            "median_ms": 78.878326,
+            "mean_ms": 79.79802711111111,
+            "stdev_ms": 2.0601591283128733
+          }
+        },
+        "two_tasks_threads": {
+          "samples_ms": [
+            87.505067,
+            88.645658,
+            86.725717,
+            86.504687,
+            83.836215,
+            86.299681,
+            84.848784,
+            87.605391,
+            90.781992
+          ],
+          "statistics": {
+            "count": 9,
+            "min_ms": 83.836215,
+            "median_ms": 86.725717,
+            "mean_ms": 86.9725768888889,
+            "stdev_ms": 2.0333087282152618
+          }
+        }
+      },
+      "thread_speedup_for_two_tasks": 0.9095148328378767,
+      "single_task_median_ms": 39.931741
+    },
+    {
+      "python_version": "3.14.6",
+      "python_build": "3.14.6 free-threading build (main, Jun 11 2026, 12:32:48) [GCC 11.4.0]",
+      "python_build_tuple": [
+        "main",
+        "Jun 11 2026 12:32:48"
+      ],
+      "python_compiler": "GCC 11.4.0",
+      "python_abiflags": "t",
+      "python_config_args": "'--prefix=/usr' '--libdir=/usr/lib/x86_64-linux-gnu' '--enable-ipv6' '--enable-loadable-sqlite-extensions' '--with-dbmliborder=bdb:gdbm' '--with-computed-gotos' '--without-ensurepip' '--with-system-expat' '--with-system-libmpdec=no' 'MKDIR_P=/bin/mkdir -p' '--enable-shared' '--disable-gil' 'CC=x86_64-linux-gnu-gcc' 'CFLAGS=-g       -fstack-protector-strong -Wformat -Werror=format-security ' 'LDFLAGS=-Wl,-Bsymbolic-functions      -g -fwrapv -O2   ' 'CPPFLAGS=-Wdate-time -D_FORTIFY_SOURCE=2'",
+      "executable": "/usr/bin/python3.14t",
+      "executable_sha256": "d5f5244523f9209648f7ef2b21b7f5612207f56ca03f9d4fde5f3abec28bc2eb",
+      "implementation": "CPython",
+      "gil_enabled_at_runtime": false,
+      "py_gil_disabled_build": true,
+      "python_int_zero_bytes": 44,
+      "cpu_affinity": [
+        2,
+        4
+      ],
+      "affinity_topology": [
+        {
+          "logical_cpu": 2,
+          "core_id": 1,
+          "package_id": 0
+        },
+        {
+          "logical_cpu": 4,
+          "core_id": 2,
+          "package_id": 0
+        }
+      ],
+      "length_per_task": 2000000,
+      "repeats": 9,
+      "execution_order": [
+        [
+          "two_tasks_threads",
+          "one_task",
+          "two_tasks_sequential"
+        ],
+        [
+          "one_task",
+          "two_tasks_threads",
+          "two_tasks_sequential"
+        ],
+        [
+          "two_tasks_threads",
+          "two_tasks_sequential",
+          "one_task"
+        ],
+        [
+          "one_task",
+          "two_tasks_sequential",
+          "two_tasks_threads"
+        ],
+        [
+          "two_tasks_threads",
+          "two_tasks_sequential",
+          "one_task"
+        ],
+        [
+          "two_tasks_threads",
+          "two_tasks_sequential",
+          "one_task"
+        ],
+        [
+          "two_tasks_threads",
+          "one_task",
+          "two_tasks_sequential"
+        ],
+        [
+          "two_tasks_sequential",
+          "one_task",
+          "two_tasks_threads"
+        ],
+        [
+          "two_tasks_threads",
+          "one_task",
+          "two_tasks_sequential"
+        ]
+      ],
+      "measurements": {
+        "one_task": {
+          "samples_ms": [
+            59.167678,
+            59.401018,
+            57.658571,
+            62.000239,
+            57.619056,
+            57.836797,
+            59.963306,
+            60.727197,
+            53.409856
+          ],
+          "statistics": {
+            "count": 9,
+            "min_ms": 53.409856,
+            "median_ms": 59.167678,
+            "mean_ms": 58.64263533333334,
+            "stdev_ms": 2.4561488411703603
+          }
+        },
+        "two_tasks_sequential": {
+          "samples_ms": [
+            118.267549,
+            108.249806,
+            115.448439,
+            121.962974,
+            113.385147,
+            118.826981,
+            117.778309,
+            120.66351,
+            116.487405
+          ],
+          "statistics": {
+            "count": 9,
+            "min_ms": 108.249806,
+            "median_ms": 117.778309,
+            "mean_ms": 116.7855688888889,
+            "stdev_ms": 4.115398636421793
+          }
+        },
+        "two_tasks_threads": {
+          "samples_ms": [
+            65.99789,
+            59.866877,
+            63.126363,
+            59.722423,
+            58.855077,
+            60.777112,
+            60.700207,
+            63.5126,
+            65.737816
+          ],
+          "statistics": {
+            "count": 9,
+            "min_ms": 58.855077,
+            "median_ms": 60.777112,
+            "mean_ms": 62.03292944444445,
+            "stdev_ms": 2.653165902236
+          }
+        }
+      },
+      "thread_speedup_for_two_tasks": 1.9378727472276074,
+      "single_task_median_ms": 59.167678
+    }
+  ]
+}

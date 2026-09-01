@@ -1,0 +1,3857 @@
+{
+  "schema_version": 2,
+  "configuration": {
+    "order_seed": 777,
+    "repeats_per_seed": 3,
+    "statistic": "median",
+    "sizes": [
+      1000,
+      10000,
+      100000,
+      1000000
+    ],
+    "algorithms": [
+      "findDuplicate_bit",
+      "findDuplicate_bit_python_numpy",
+      "findDuplicate_bit_numpy",
+      "findDuplicate_bit_numba"
+    ],
+    "hugepages_requested": false,
+    "randomized_order": true,
+    "data_seeds": [
+      101,
+      202,
+      303,
+      404,
+      505,
+      606,
+      707,
+      808,
+      909,
+      1010,
+      1111,
+      1212,
+      1313,
+      1414,
+      1515
+    ],
+    "hugepages_used": false,
+    "execution_order": {
+      "n=1000,seed=101": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy"
+        ]
+      ],
+      "n=1000,seed=202": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit"
+        ]
+      ],
+      "n=1000,seed=303": [
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit"
+        ]
+      ],
+      "n=1000,seed=404": [
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy"
+        ]
+      ],
+      "n=1000,seed=505": [
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=1000,seed=606": [
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ]
+      ],
+      "n=1000,seed=707": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=1000,seed=808": [
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit"
+        ]
+      ],
+      "n=1000,seed=909": [
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ]
+      ],
+      "n=1000,seed=1010": [
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=1000,seed=1111": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy"
+        ]
+      ],
+      "n=1000,seed=1212": [
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ]
+      ],
+      "n=1000,seed=1313": [
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy"
+        ]
+      ],
+      "n=1000,seed=1414": [
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ]
+      ],
+      "n=1000,seed=1515": [
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=10000,seed=101": [
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit"
+        ]
+      ],
+      "n=10000,seed=202": [
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit"
+        ]
+      ],
+      "n=10000,seed=303": [
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy"
+        ]
+      ],
+      "n=10000,seed=404": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ]
+      ],
+      "n=10000,seed=505": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit"
+        ]
+      ],
+      "n=10000,seed=606": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ]
+      ],
+      "n=10000,seed=707": [
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba"
+        ]
+      ],
+      "n=10000,seed=808": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=10000,seed=909": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ]
+      ],
+      "n=10000,seed=1010": [
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=10000,seed=1111": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit"
+        ]
+      ],
+      "n=10000,seed=1212": [
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ]
+      ],
+      "n=10000,seed=1313": [
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit"
+        ]
+      ],
+      "n=10000,seed=1414": [
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ]
+      ],
+      "n=10000,seed=1515": [
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=100000,seed=101": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=100000,seed=202": [
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=100000,seed=303": [
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ]
+      ],
+      "n=100000,seed=404": [
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=100000,seed=505": [
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ]
+      ],
+      "n=100000,seed=606": [
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=100000,seed=707": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=100000,seed=808": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ]
+      ],
+      "n=100000,seed=909": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=100000,seed=1010": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit"
+        ]
+      ],
+      "n=100000,seed=1111": [
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=100000,seed=1212": [
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=100000,seed=1313": [
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=100000,seed=1414": [
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=100000,seed=1515": [
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=1000000,seed=101": [
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=1000000,seed=202": [
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ]
+      ],
+      "n=1000000,seed=303": [
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=1000000,seed=404": [
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit"
+        ]
+      ],
+      "n=1000000,seed=505": [
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ]
+      ],
+      "n=1000000,seed=606": [
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit"
+        ]
+      ],
+      "n=1000000,seed=707": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ]
+      ],
+      "n=1000000,seed=808": [
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=1000000,seed=909": [
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ]
+      ],
+      "n=1000000,seed=1010": [
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ]
+      ],
+      "n=1000000,seed=1111": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba"
+        ]
+      ],
+      "n=1000000,seed=1212": [
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numpy"
+        ]
+      ],
+      "n=1000000,seed=1313": [
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy"
+        ]
+      ],
+      "n=1000000,seed=1414": [
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ],
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_python_numpy"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy"
+        ]
+      ],
+      "n=1000000,seed=1515": [
+        [
+          "findDuplicate_bit",
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit_numba",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit"
+        ],
+        [
+          "findDuplicate_bit_python_numpy",
+          "findDuplicate_bit",
+          "findDuplicate_bit_numpy",
+          "findDuplicate_bit_numba"
+        ]
+      ]
+    },
+    "gc_disabled_during_timing": true,
+    "cache_conditioning": {
+      "method": "best-effort sequential flush-buffer read before each timed call",
+      "flush_buffer_mib": 64,
+      "guarantees_cold_cache": false
+    }
+  },
+  "environment": {
+    "python": "3.10.12",
+    "implementation": "CPython",
+    "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.35",
+    "machine": "x86_64",
+    "processor": "AMD Ryzen 5 7535HS with Radeon Graphics",
+    "logical_cpu_count": 12,
+    "memory_total_kib": 32084196,
+    "cache_hierarchy_cpu0": [
+      {
+        "level": "1",
+        "type": "Data",
+        "size": "32K"
+      },
+      {
+        "level": "1",
+        "type": "Instruction",
+        "size": "32K"
+      },
+      {
+        "level": "2",
+        "type": "Unified",
+        "size": "512K"
+      },
+      {
+        "level": "3",
+        "type": "Unified",
+        "size": "16384K"
+      }
+    ],
+    "numpy": "2.2.6",
+    "numba": "0.67.0",
+    "llvmlite": "0.49.0",
+    "numba_threads": 1,
+    "numba_threading_layer": "omp",
+    "cpu_affinity": [
+      2
+    ],
+    "affinity_topology": [
+      {
+        "logical_cpu": 2,
+        "core_id": 1,
+        "package_id": 0
+      }
+    ],
+    "process_peak_rss_kib": 317408
+  },
+  "measurements": [
+    {
+      "algorithm": "findDuplicate_bit",
+      "algorithm_family": "bit_counting",
+      "execution_model": "cpython",
+      "n": 1000,
+      "input_representation": "python.list[int]",
+      "packed_equivalent_bytes": 4004,
+      "summary_ms": 0.394715,
+      "sample_groups": [
+        {
+          "n": 1000,
+          "data_seed": 101,
+          "samples_ms": [
+            0.575736,
+            0.388122,
+            0.394715
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 202,
+          "samples_ms": [
+            0.452924,
+            0.473773,
+            0.392009
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 303,
+          "samples_ms": [
+            0.387751,
+            0.373334,
+            0.394724
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 404,
+          "samples_ms": [
+            0.394885,
+            0.393072,
+            0.448295
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 505,
+          "samples_ms": [
+            0.388422,
+            0.385607,
+            0.444618
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 606,
+          "samples_ms": [
+            0.388543,
+            0.397619,
+            0.38692
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 707,
+          "samples_ms": [
+            0.388422,
+            0.391498,
+            0.395265
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 808,
+          "samples_ms": [
+            0.38754,
+            0.392109,
+            0.39285
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 909,
+          "samples_ms": [
+            0.392119,
+            0.416495,
+            0.398051
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1010,
+          "samples_ms": [
+            0.393091,
+            0.38196,
+            0.405144
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1111,
+          "samples_ms": [
+            0.391729,
+            0.39758,
+            0.376991
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1212,
+          "samples_ms": [
+            0.414892,
+            0.402409,
+            0.393642
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1313,
+          "samples_ms": [
+            0.398662,
+            0.397259,
+            0.395505
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1414,
+          "samples_ms": [
+            0.409582,
+            0.400024,
+            0.378463
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1515,
+          "samples_ms": [
+            0.395065,
+            0.394864,
+            0.391458
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 0.387751,
+        "median_ms": 0.394715,
+        "mean_ms": 0.39788493333333336,
+        "p95_ms": 0.4175635,
+        "stdev_ms": 0.015805700140259824,
+        "median_ci95_low_ms": 0.391729,
+        "median_ci95_high_ms": 0.397259,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 0.394715
+      },
+      "confidence_unit": "per-data-seed median"
+    },
+    {
+      "algorithm": "findDuplicate_bit",
+      "algorithm_family": "bit_counting",
+      "execution_model": "cpython",
+      "n": 10000,
+      "input_representation": "python.list[int]",
+      "packed_equivalent_bytes": 40004,
+      "summary_ms": 5.131655,
+      "sample_groups": [
+        {
+          "n": 10000,
+          "data_seed": 101,
+          "samples_ms": [
+            5.090146,
+            5.245128,
+            5.090677
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 202,
+          "samples_ms": [
+            5.075639,
+            5.138157,
+            5.177501
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 303,
+          "samples_ms": [
+            5.15074,
+            5.181128,
+            5.062744
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 404,
+          "samples_ms": [
+            5.130813,
+            5.080268,
+            5.082933
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 505,
+          "samples_ms": [
+            5.159798,
+            5.236322,
+            5.117327
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 606,
+          "samples_ms": [
+            4.963247,
+            5.197338,
+            5.210273
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 707,
+          "samples_ms": [
+            5.024432,
+            5.092621,
+            5.090957
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 808,
+          "samples_ms": [
+            5.095997,
+            5.292758,
+            5.147805
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 909,
+          "samples_ms": [
+            5.051173,
+            5.075849,
+            5.098131
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1010,
+          "samples_ms": [
+            5.091679,
+            5.087951,
+            5.03913
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1111,
+          "samples_ms": [
+            5.242012,
+            4.973957,
+            5.069627
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1212,
+          "samples_ms": [
+            5.033439,
+            5.147193,
+            5.131655
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1313,
+          "samples_ms": [
+            5.095195,
+            5.525407,
+            5.165558
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1414,
+          "samples_ms": [
+            5.36254,
+            5.312716,
+            5.106577
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1515,
+          "samples_ms": [
+            5.20372,
+            4.910007,
+            5.119201
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 5.069627,
+        "median_ms": 5.131655,
+        "mean_ms": 5.1347308,
+        "p95_ms": 5.2319514,
+        "stdev_ms": 0.06227846035370955,
+        "median_ci95_low_ms": 5.087951,
+        "median_ci95_high_ms": 5.159798,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 5.106577
+      },
+      "confidence_unit": "per-data-seed median"
+    },
+    {
+      "algorithm": "findDuplicate_bit",
+      "algorithm_family": "bit_counting",
+      "execution_model": "cpython",
+      "n": 100000,
+      "input_representation": "python.list[int]",
+      "packed_equivalent_bytes": 400004,
+      "summary_ms": 62.922427,
+      "sample_groups": [
+        {
+          "n": 100000,
+          "data_seed": 101,
+          "samples_ms": [
+            62.870274,
+            62.878249,
+            63.982649
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 202,
+          "samples_ms": [
+            62.902182,
+            65.231313,
+            66.239102
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 303,
+          "samples_ms": [
+            63.455384,
+            63.846811,
+            64.696794
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 404,
+          "samples_ms": [
+            62.834531,
+            62.752117,
+            62.407286
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 505,
+          "samples_ms": [
+            62.236673,
+            62.514065,
+            61.505866
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 606,
+          "samples_ms": [
+            63.321888,
+            62.544462,
+            62.316191
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 707,
+          "samples_ms": [
+            63.695972,
+            63.071004,
+            62.081367
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 808,
+          "samples_ms": [
+            64.699262,
+            62.794311,
+            62.236098
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 909,
+          "samples_ms": [
+            62.825378,
+            63.090156,
+            63.493207
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1010,
+          "samples_ms": [
+            63.333195,
+            63.103381,
+            62.293884
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1111,
+          "samples_ms": [
+            62.483352,
+            63.7455,
+            62.922427
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1212,
+          "samples_ms": [
+            62.702633,
+            62.846014,
+            63.456582
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1313,
+          "samples_ms": [
+            64.955608,
+            62.52156,
+            62.09146
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1414,
+          "samples_ms": [
+            62.975825,
+            63.304434,
+            62.673726
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1515,
+          "samples_ms": [
+            62.347329,
+            63.205386,
+            64.23177
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 62.236673,
+        "median_ms": 62.922427,
+        "mean_ms": 63.06797926666666,
+        "p95_ms": 64.2621616,
+        "stdev_ms": 0.7000279754249076,
+        "median_ci95_low_ms": 62.794311,
+        "median_ci95_high_ms": 63.103381,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 62.902182
+      },
+      "confidence_unit": "per-data-seed median"
+    },
+    {
+      "algorithm": "findDuplicate_bit",
+      "algorithm_family": "bit_counting",
+      "execution_model": "cpython",
+      "n": 1000000,
+      "input_representation": "python.list[int]",
+      "packed_equivalent_bytes": 4000004,
+      "summary_ms": 755.083217,
+      "sample_groups": [
+        {
+          "n": 1000000,
+          "data_seed": 101,
+          "samples_ms": [
+            761.882618,
+            741.742367,
+            749.669885
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 202,
+          "samples_ms": [
+            748.052903,
+            743.463575,
+            749.562715
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 303,
+          "samples_ms": [
+            753.473296,
+            742.061644,
+            751.483033
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 404,
+          "samples_ms": [
+            744.710864,
+            767.098615,
+            756.311249
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 505,
+          "samples_ms": [
+            752.652604,
+            748.530591,
+            740.685948
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 606,
+          "samples_ms": [
+            743.95862,
+            740.625188,
+            748.554663
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 707,
+          "samples_ms": [
+            742.352847,
+            748.650414,
+            747.366656
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 808,
+          "samples_ms": [
+            758.082004,
+            771.944672,
+            756.812323
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 909,
+          "samples_ms": [
+            762.383795,
+            767.583794,
+            769.796878
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1010,
+          "samples_ms": [
+            747.86914,
+            755.502804,
+            767.576157
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1111,
+          "samples_ms": [
+            747.84516,
+            765.347827,
+            765.55591
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1212,
+          "samples_ms": [
+            755.083217,
+            754.360944,
+            762.914006
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1313,
+          "samples_ms": [
+            749.176637,
+            752.739582,
+            765.02029
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1414,
+          "samples_ms": [
+            762.708398,
+            750.419331,
+            766.817745
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1515,
+          "samples_ms": [
+            759.444893,
+            761.001554,
+            767.622762
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 743.95862,
+        "median_ms": 755.083217,
+        "mean_ms": 754.8948078,
+        "p95_ms": 766.0186171,
+        "stdev_ms": 7.012047889839111,
+        "median_ci95_low_ms": 749.669885,
+        "median_ci95_high_ms": 761.001554,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 753.473296
+      },
+      "confidence_unit": "per-data-seed median"
+    },
+    {
+      "algorithm": "findDuplicate_bit_python_numpy",
+      "algorithm_family": "bit_counting",
+      "execution_model": "cpython",
+      "n": 1000,
+      "input_representation": "numpy.int32",
+      "packed_equivalent_bytes": 4004,
+      "summary_ms": 0.82236,
+      "sample_groups": [
+        {
+          "n": 1000,
+          "data_seed": 101,
+          "samples_ms": [
+            0.856715,
+            0.817762,
+            0.831989
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 202,
+          "samples_ms": [
+            0.807001,
+            0.803735,
+            0.824655
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 303,
+          "samples_ms": [
+            0.805729,
+            0.848259,
+            0.825877
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 404,
+          "samples_ms": [
+            0.82199,
+            0.805138,
+            0.81698
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 505,
+          "samples_ms": [
+            0.826899,
+            0.825266,
+            0.810438
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 606,
+          "samples_ms": [
+            0.845003,
+            0.802904,
+            0.82236
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 707,
+          "samples_ms": [
+            0.813504,
+            0.826108,
+            0.82772
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 808,
+          "samples_ms": [
+            0.834423,
+            0.807002,
+            0.825687
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 909,
+          "samples_ms": [
+            0.813514,
+            0.910056,
+            0.837228
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1010,
+          "samples_ms": [
+            0.815758,
+            0.813153,
+            0.825677
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1111,
+          "samples_ms": [
+            0.80619,
+            0.82706,
+            0.808234
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1212,
+          "samples_ms": [
+            0.818683,
+            0.819455,
+            0.822631
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1313,
+          "samples_ms": [
+            0.806671,
+            0.813523,
+            0.808814
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1414,
+          "samples_ms": [
+            0.82718,
+            0.797313,
+            0.834172
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1515,
+          "samples_ms": [
+            0.814004,
+            0.812111,
+            0.810047
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 0.807001,
+        "median_ms": 0.82236,
+        "mean_ms": 0.8206698666666666,
+        "p95_ms": 0.8335606999999999,
+        "stdev_ms": 0.009043697354406273,
+        "median_ci95_low_ms": 0.815758,
+        "median_ci95_high_ms": 0.826108,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 0.818683
+      },
+      "confidence_unit": "per-data-seed median"
+    },
+    {
+      "algorithm": "findDuplicate_bit_python_numpy",
+      "algorithm_family": "bit_counting",
+      "execution_model": "cpython",
+      "n": 10000,
+      "input_representation": "numpy.int32",
+      "packed_equivalent_bytes": 40004,
+      "summary_ms": 11.188444,
+      "sample_groups": [
+        {
+          "n": 10000,
+          "data_seed": 101,
+          "samples_ms": [
+            11.153758,
+            11.437102,
+            11.188444
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 202,
+          "samples_ms": [
+            11.289083,
+            11.060022,
+            11.18633
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 303,
+          "samples_ms": [
+            11.055623,
+            11.423636,
+            11.479803
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 404,
+          "samples_ms": [
+            11.179016,
+            11.126317,
+            11.226295
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 505,
+          "samples_ms": [
+            11.170279,
+            11.343266,
+            11.291156
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 606,
+          "samples_ms": [
+            11.232005,
+            11.221776,
+            11.523345
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 707,
+          "samples_ms": [
+            11.182091,
+            11.832918,
+            11.291908
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 808,
+          "samples_ms": [
+            11.007943,
+            11.343786,
+            11.101409
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 909,
+          "samples_ms": [
+            11.355418,
+            11.302268,
+            11.292288
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1010,
+          "samples_ms": [
+            10.759815,
+            11.450177,
+            10.967396
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1111,
+          "samples_ms": [
+            11.06471,
+            11.031918,
+            10.92193
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1212,
+          "samples_ms": [
+            10.880182,
+            11.450307,
+            10.96969
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1313,
+          "samples_ms": [
+            11.122198,
+            11.464293,
+            11.438023
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1414,
+          "samples_ms": [
+            11.267472,
+            11.819372,
+            11.044251
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1515,
+          "samples_ms": [
+            11.008103,
+            11.477607,
+            10.939764
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 10.967396,
+        "median_ms": 11.188444,
+        "mean_ms": 11.191918266666667,
+        "p95_ms": 11.4279521,
+        "stdev_ms": 0.15146536192309842,
+        "median_ci95_low_ms": 11.101409,
+        "median_ci95_high_ms": 11.291156,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 11.221776
+      },
+      "confidence_unit": "per-data-seed median"
+    },
+    {
+      "algorithm": "findDuplicate_bit_python_numpy",
+      "algorithm_family": "bit_counting",
+      "execution_model": "cpython",
+      "n": 100000,
+      "input_representation": "numpy.int32",
+      "packed_equivalent_bytes": 400004,
+      "summary_ms": 136.698107,
+      "sample_groups": [
+        {
+          "n": 100000,
+          "data_seed": 101,
+          "samples_ms": [
+            137.188991,
+            138.137415,
+            136.348081
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 202,
+          "samples_ms": [
+            136.253914,
+            142.811837,
+            142.12565
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 303,
+          "samples_ms": [
+            140.595434,
+            139.643741,
+            136.130999
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 404,
+          "samples_ms": [
+            139.839105,
+            135.87341,
+            136.148929
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 505,
+          "samples_ms": [
+            133.936489,
+            152.419167,
+            137.016661
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 606,
+          "samples_ms": [
+            137.278475,
+            138.149815,
+            136.594151
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 707,
+          "samples_ms": [
+            136.698107,
+            138.1426,
+            135.908976
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 808,
+          "samples_ms": [
+            136.866812,
+            136.523775,
+            135.705802
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 909,
+          "samples_ms": [
+            136.180164,
+            138.588203,
+            136.627868
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1010,
+          "samples_ms": [
+            138.41332,
+            133.327042,
+            135.711156
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1111,
+          "samples_ms": [
+            136.017524,
+            134.136093,
+            134.790707
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1212,
+          "samples_ms": [
+            137.519922,
+            139.566369,
+            134.659967
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1313,
+          "samples_ms": [
+            138.224066,
+            134.930989,
+            133.1662
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1414,
+          "samples_ms": [
+            136.569583,
+            135.315059,
+            137.402854
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1515,
+          "samples_ms": [
+            133.9102,
+            139.954,
+            139.55101
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 134.790707,
+        "median_ms": 136.698107,
+        "mean_ms": 137.22170426666665,
+        "p95_ms": 140.3883137,
+        "stdev_ms": 1.9199101638814282,
+        "median_ci95_low_ms": 136.148929,
+        "median_ci95_high_ms": 137.519922,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 136.627868
+      },
+      "confidence_unit": "per-data-seed median"
+    },
+    {
+      "algorithm": "findDuplicate_bit_python_numpy",
+      "algorithm_family": "bit_counting",
+      "execution_model": "cpython",
+      "n": 1000000,
+      "input_representation": "numpy.int32",
+      "packed_equivalent_bytes": 4000004,
+      "summary_ms": 1638.935356,
+      "sample_groups": [
+        {
+          "n": 1000000,
+          "data_seed": 101,
+          "samples_ms": [
+            1618.65591,
+            1608.414425,
+            1586.305874
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 202,
+          "samples_ms": [
+            1632.248659,
+            1622.609116,
+            1637.299223
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 303,
+          "samples_ms": [
+            1636.715416,
+            1644.058833,
+            1661.081097
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 404,
+          "samples_ms": [
+            1643.43279,
+            1644.25009,
+            1657.781044
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 505,
+          "samples_ms": [
+            1623.619079,
+            1628.065198,
+            1606.699553
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 606,
+          "samples_ms": [
+            1596.910931,
+            1617.811899,
+            1606.349177
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 707,
+          "samples_ms": [
+            1615.526315,
+            1611.621744,
+            1642.394398
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 808,
+          "samples_ms": [
+            1659.514939,
+            1669.969145,
+            1643.065914
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 909,
+          "samples_ms": [
+            1672.730234,
+            1680.385642,
+            1615.753267
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1010,
+          "samples_ms": [
+            1637.860515,
+            1618.503196,
+            1654.257052
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1111,
+          "samples_ms": [
+            1633.897745,
+            1641.048576,
+            1655.509568
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1212,
+          "samples_ms": [
+            1608.41524,
+            1620.78588,
+            1622.163403
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1313,
+          "samples_ms": [
+            1661.655891,
+            1643.512882,
+            1660.371076
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1414,
+          "samples_ms": [
+            1668.169695,
+            1615.597081,
+            1638.935356
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1515,
+          "samples_ms": [
+            1648.588107,
+            1674.757276,
+            1664.200958
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 1606.349177,
+        "median_ms": 1638.935356,
+        "mean_ms": 1637.9942741333332,
+        "p95_ms": 1666.7597408,
+        "stdev_ms": 20.45964643265337,
+        "median_ci95_low_ms": 1620.78588,
+        "median_ci95_high_ms": 1644.6317112249978,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 1637.860515
+      },
+      "confidence_unit": "per-data-seed median"
+    },
+    {
+      "algorithm": "findDuplicate_bit_numpy",
+      "algorithm_family": "bit_counting",
+      "execution_model": "numpy",
+      "n": 1000,
+      "input_representation": "numpy.int32",
+      "packed_equivalent_bytes": 4004,
+      "summary_ms": 0.100209,
+      "sample_groups": [
+        {
+          "n": 1000,
+          "data_seed": 101,
+          "samples_ms": [
+            0.130095,
+            0.098786,
+            0.106591
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 202,
+          "samples_ms": [
+            0.097654,
+            0.100329,
+            0.101802
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 303,
+          "samples_ms": [
+            0.097784,
+            0.099748,
+            0.102564
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 404,
+          "samples_ms": [
+            0.10085,
+            0.096362,
+            0.096793
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 505,
+          "samples_ms": [
+            0.090651,
+            0.112101,
+            0.103125
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 606,
+          "samples_ms": [
+            0.099859,
+            0.094137,
+            0.100629
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 707,
+          "samples_ms": [
+            0.107984,
+            0.098406,
+            0.10057
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 808,
+          "samples_ms": [
+            0.100209,
+            0.104407,
+            0.094799
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 909,
+          "samples_ms": [
+            0.119685,
+            0.103335,
+            0.096422
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1010,
+          "samples_ms": [
+            0.1005,
+            0.09574,
+            0.11094
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1111,
+          "samples_ms": [
+            0.113023,
+            0.096512,
+            0.09575
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1212,
+          "samples_ms": [
+            0.100569,
+            0.139803,
+            0.100539
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1313,
+          "samples_ms": [
+            0.093466,
+            0.103395,
+            0.095329
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1414,
+          "samples_ms": [
+            0.093757,
+            0.103625,
+            0.095049
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1515,
+          "samples_ms": [
+            0.096242,
+            0.096782,
+            0.093176
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 0.095049,
+        "median_ms": 0.100209,
+        "mean_ms": 0.09965066666666668,
+        "p95_ms": 0.1043118,
+        "stdev_ms": 0.003235260988956946,
+        "median_ci95_low_ms": 0.096512,
+        "median_ci95_high_ms": 0.10057,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 0.100209
+      },
+      "confidence_unit": "per-data-seed median"
+    },
+    {
+      "algorithm": "findDuplicate_bit_numpy",
+      "algorithm_family": "bit_counting",
+      "execution_model": "numpy",
+      "n": 10000,
+      "input_representation": "numpy.int32",
+      "packed_equivalent_bytes": 40004,
+      "summary_ms": 0.181452,
+      "sample_groups": [
+        {
+          "n": 10000,
+          "data_seed": 101,
+          "samples_ms": [
+            0.247176,
+            0.17017,
+            0.186501
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 202,
+          "samples_ms": [
+            0.173888,
+            0.161785,
+            0.168297
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 303,
+          "samples_ms": [
+            0.183637,
+            0.167767,
+            0.16954
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 404,
+          "samples_ms": [
+            0.174038,
+            0.170281,
+            0.176532
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 505,
+          "samples_ms": [
+            0.169981,
+            0.165202,
+            0.171393
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 606,
+          "samples_ms": [
+            0.174419,
+            0.170502,
+            0.168017
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 707,
+          "samples_ms": [
+            0.201159,
+            0.275369,
+            0.178166
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 808,
+          "samples_ms": [
+            0.182324,
+            0.182915,
+            0.194847
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 909,
+          "samples_ms": [
+            0.230344,
+            0.188695,
+            0.223061
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1010,
+          "samples_ms": [
+            0.181452,
+            0.177755,
+            0.185059
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1111,
+          "samples_ms": [
+            0.174078,
+            0.172085,
+            0.175581
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1212,
+          "samples_ms": [
+            0.207581,
+            0.176132,
+            0.200037
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1313,
+          "samples_ms": [
+            0.178567,
+            0.190088,
+            0.177424
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1414,
+          "samples_ms": [
+            0.22273,
+            0.176653,
+            0.188335
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1515,
+          "samples_ms": [
+            0.223612,
+            0.17467,
+            0.220546
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 0.168297,
+        "median_ms": 0.181452,
+        "mean_ms": 0.18593393333333333,
+        "p95_ms": 0.22130049999999998,
+        "stdev_ms": 0.017830978181911657,
+        "median_ci95_low_ms": 0.170502,
+        "median_ci95_high_ms": 0.200037,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 0.177755
+      },
+      "confidence_unit": "per-data-seed median"
+    },
+    {
+      "algorithm": "findDuplicate_bit_numpy",
+      "algorithm_family": "bit_counting",
+      "execution_model": "numpy",
+      "n": 100000,
+      "input_representation": "numpy.int32",
+      "packed_equivalent_bytes": 400004,
+      "summary_ms": 0.850624,
+      "sample_groups": [
+        {
+          "n": 100000,
+          "data_seed": 101,
+          "samples_ms": [
+            1.04464,
+            0.935724,
+            0.879278
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 202,
+          "samples_ms": [
+            0.964007,
+            0.845925,
+            0.833582
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 303,
+          "samples_ms": [
+            0.998152,
+            0.899526,
+            0.890439
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 404,
+          "samples_ms": [
+            0.838771,
+            0.901009,
+            0.823924
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 505,
+          "samples_ms": [
+            0.869419,
+            0.889266,
+            0.877956
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 606,
+          "samples_ms": [
+            0.829122,
+            0.865442,
+            0.840274
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 707,
+          "samples_ms": [
+            0.850203,
+            0.829764,
+            0.832069
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 808,
+          "samples_ms": [
+            0.850624,
+            0.828071,
+            0.857927
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 909,
+          "samples_ms": [
+            0.847778,
+            0.828202,
+            0.825607
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1010,
+          "samples_ms": [
+            0.843661,
+            0.976982,
+            0.914544
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1111,
+          "samples_ms": [
+            0.848008,
+            0.840123,
+            0.932939
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1212,
+          "samples_ms": [
+            0.829373,
+            0.836226,
+            0.828942
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1313,
+          "samples_ms": [
+            0.842488,
+            1.092219,
+            0.937046
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1414,
+          "samples_ms": [
+            0.867956,
+            0.850904,
+            0.841857
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1515,
+          "samples_ms": [
+            0.91796,
+            0.850102,
+            1.304619
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 0.828202,
+        "median_ms": 0.850624,
+        "mean_ms": 0.8697937333333333,
+        "p95_ms": 0.9361206,
+        "stdev_ms": 0.04011785917138699,
+        "median_ci95_low_ms": 0.840274,
+        "median_ci95_high_ms": 0.914544,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 0.850624
+      },
+      "confidence_unit": "per-data-seed median"
+    },
+    {
+      "algorithm": "findDuplicate_bit_numpy",
+      "algorithm_family": "bit_counting",
+      "execution_model": "numpy",
+      "n": 1000000,
+      "input_representation": "numpy.int32",
+      "packed_equivalent_bytes": 4000004,
+      "summary_ms": 10.887418,
+      "sample_groups": [
+        {
+          "n": 1000000,
+          "data_seed": 101,
+          "samples_ms": [
+            80.238838,
+            13.595305,
+            11.765315
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 202,
+          "samples_ms": [
+            14.613702,
+            9.702265,
+            10.444754
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 303,
+          "samples_ms": [
+            10.708609,
+            11.394191,
+            10.944725
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 404,
+          "samples_ms": [
+            10.100362,
+            10.402732,
+            10.676467
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 505,
+          "samples_ms": [
+            10.534818,
+            10.513248,
+            10.712212
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 606,
+          "samples_ms": [
+            11.092578,
+            9.785755,
+            10.620768
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 707,
+          "samples_ms": [
+            10.320502,
+            10.994381,
+            10.887418
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 808,
+          "samples_ms": [
+            10.937412,
+            10.0663,
+            11.043661
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 909,
+          "samples_ms": [
+            9.690442,
+            10.103288,
+            11.205864
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1010,
+          "samples_ms": [
+            10.953017,
+            10.619578,
+            10.599771
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1111,
+          "samples_ms": [
+            10.052981,
+            14.829364,
+            13.357762
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1212,
+          "samples_ms": [
+            11.077457,
+            10.603054,
+            11.239581
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1313,
+          "samples_ms": [
+            9.819227,
+            10.609063,
+            11.633401
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1414,
+          "samples_ms": [
+            10.468948,
+            10.92113,
+            11.451537
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1515,
+          "samples_ms": [
+            10.850185,
+            11.723097,
+            11.086428
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 10.103288,
+        "median_ms": 10.887418,
+        "mean_ms": 11.076175866666667,
+        "p95_ms": 13.4290249,
+        "stdev_ms": 1.013263075381559,
+        "median_ci95_low_ms": 10.534818,
+        "median_ci95_high_ms": 11.077457,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 10.850185
+      },
+      "confidence_unit": "per-data-seed median"
+    },
+    {
+      "algorithm": "findDuplicate_bit_numba",
+      "algorithm_family": "bit_counting",
+      "execution_model": "numba",
+      "n": 1000,
+      "input_representation": "numpy.int32",
+      "packed_equivalent_bytes": 4004,
+      "summary_ms": 0.008596,
+      "sample_groups": [
+        {
+          "n": 1000,
+          "data_seed": 101,
+          "samples_ms": [
+            0.011943,
+            0.009858,
+            0.007585
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 202,
+          "samples_ms": [
+            0.008396,
+            0.008816,
+            0.008095
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 303,
+          "samples_ms": [
+            0.009348,
+            0.009408,
+            0.008376
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 404,
+          "samples_ms": [
+            0.008746,
+            0.008787,
+            0.008035
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 505,
+          "samples_ms": [
+            0.009188,
+            0.008596,
+            0.007855
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 606,
+          "samples_ms": [
+            0.008877,
+            0.009377,
+            0.008617
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 707,
+          "samples_ms": [
+            0.008607,
+            0.008376,
+            0.008416
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 808,
+          "samples_ms": [
+            0.008356,
+            0.007895,
+            0.008066
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 909,
+          "samples_ms": [
+            0.009498,
+            0.07954,
+            0.008266
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1010,
+          "samples_ms": [
+            0.008596,
+            0.008456,
+            0.009689
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1111,
+          "samples_ms": [
+            0.01067,
+            0.006492,
+            0.008717
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1212,
+          "samples_ms": [
+            0.008837,
+            0.008195,
+            0.008607
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1313,
+          "samples_ms": [
+            0.008396,
+            0.013075,
+            0.008196
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1414,
+          "samples_ms": [
+            0.007844,
+            0.008476,
+            0.009138
+          ]
+        },
+        {
+          "n": 1000,
+          "data_seed": 1515,
+          "samples_ms": [
+            0.008486,
+            0.009978,
+            0.007965
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 0.008066,
+        "median_ms": 0.008596,
+        "mean_ms": 0.008738600000000001,
+        "p95_ms": 0.009606,
+        "stdev_ms": 0.0004782970983454889,
+        "median_ci95_low_ms": 0.008416,
+        "median_ci95_high_ms": 0.008877,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 0.008596
+      },
+      "confidence_unit": "per-data-seed median"
+    },
+    {
+      "algorithm": "findDuplicate_bit_numba",
+      "algorithm_family": "bit_counting",
+      "execution_model": "numba",
+      "n": 10000,
+      "input_representation": "numpy.int32",
+      "packed_equivalent_bytes": 40004,
+      "summary_ms": 0.018495,
+      "sample_groups": [
+        {
+          "n": 10000,
+          "data_seed": 101,
+          "samples_ms": [
+            0.027332,
+            0.018455,
+            0.017754
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 202,
+          "samples_ms": [
+            0.018444,
+            0.018755,
+            0.018034
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 303,
+          "samples_ms": [
+            0.018745,
+            0.016972,
+            0.018285
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 404,
+          "samples_ms": [
+            0.018955,
+            0.017954,
+            0.018675
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 505,
+          "samples_ms": [
+            0.018464,
+            0.018785,
+            0.018415
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 606,
+          "samples_ms": [
+            0.018716,
+            0.019046,
+            0.018525
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 707,
+          "samples_ms": [
+            0.018294,
+            0.018414,
+            0.019467
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 808,
+          "samples_ms": [
+            0.018555,
+            0.018755,
+            0.018826
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 909,
+          "samples_ms": [
+            0.020278,
+            0.018305,
+            0.018495
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1010,
+          "samples_ms": [
+            0.018455,
+            0.018164,
+            0.018815
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1111,
+          "samples_ms": [
+            0.018385,
+            0.018044,
+            0.019056
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1212,
+          "samples_ms": [
+            0.022994,
+            0.018945,
+            0.019146
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1313,
+          "samples_ms": [
+            0.018845,
+            0.019016,
+            0.019496
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1414,
+          "samples_ms": [
+            0.018776,
+            0.018274,
+            0.018845
+          ]
+        },
+        {
+          "n": 10000,
+          "data_seed": 1515,
+          "samples_ms": [
+            0.018976,
+            0.019106,
+            0.017804
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 0.018285,
+        "median_ms": 0.018495,
+        "mean_ms": 0.018630466666666668,
+        "p95_ms": 0.019055000000000002,
+        "stdev_ms": 0.0002603102178628602,
+        "median_ci95_low_ms": 0.018455,
+        "median_ci95_high_ms": 0.018776,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 0.018716
+      },
+      "confidence_unit": "per-data-seed median"
+    },
+    {
+      "algorithm": "findDuplicate_bit_numba",
+      "algorithm_family": "bit_counting",
+      "execution_model": "numba",
+      "n": 100000,
+      "input_representation": "numpy.int32",
+      "packed_equivalent_bytes": 400004,
+      "summary_ms": 0.135796,
+      "sample_groups": [
+        {
+          "n": 100000,
+          "data_seed": 101,
+          "samples_ms": [
+            0.135766,
+            0.157016,
+            0.135796
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 202,
+          "samples_ms": [
+            0.132579,
+            0.135065,
+            0.136016
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 303,
+          "samples_ms": [
+            0.133602,
+            0.134483,
+            0.193184
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 404,
+          "samples_ms": [
+            0.134434,
+            0.133542,
+            0.244
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 505,
+          "samples_ms": [
+            0.134995,
+            0.135936,
+            0.136297
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 606,
+          "samples_ms": [
+            0.136457,
+            0.132169,
+            0.187193
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 707,
+          "samples_ms": [
+            0.131929,
+            0.133451,
+            0.140014
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 808,
+          "samples_ms": [
+            0.132249,
+            0.146636,
+            0.133081
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 909,
+          "samples_ms": [
+            0.14281,
+            0.138451,
+            0.133762
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1010,
+          "samples_ms": [
+            0.133472,
+            0.1377,
+            0.177164
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1111,
+          "samples_ms": [
+            0.144943,
+            0.134804,
+            0.133221
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1212,
+          "samples_ms": [
+            0.141907,
+            0.137519,
+            0.134263
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1313,
+          "samples_ms": [
+            0.209224,
+            0.13262,
+            0.13295
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1414,
+          "samples_ms": [
+            0.187935,
+            0.13815,
+            0.136798
+          ]
+        },
+        {
+          "n": 100000,
+          "data_seed": 1515,
+          "samples_ms": [
+            0.242176,
+            0.132179,
+            0.140805
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 0.13295,
+        "median_ms": 0.135796,
+        "mean_ms": 0.1359388,
+        "p95_ms": 0.1391572,
+        "stdev_ms": 0.0022439189952275147,
+        "median_ci95_low_ms": 0.134434,
+        "median_ci95_high_ms": 0.1377,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 0.135936
+      },
+      "confidence_unit": "per-data-seed median"
+    },
+    {
+      "algorithm": "findDuplicate_bit_numba",
+      "algorithm_family": "bit_counting",
+      "execution_model": "numba",
+      "n": 1000000,
+      "input_representation": "numpy.int32",
+      "packed_equivalent_bytes": 4000004,
+      "summary_ms": 1.566912,
+      "sample_groups": [
+        {
+          "n": 1000000,
+          "data_seed": 101,
+          "samples_ms": [
+            1.482554,
+            1.603873,
+            1.542286
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 202,
+          "samples_ms": [
+            2.255902,
+            1.512981,
+            1.632978
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 303,
+          "samples_ms": [
+            1.562564,
+            1.484698,
+            1.641203
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 404,
+          "samples_ms": [
+            1.692849,
+            1.534402,
+            1.605415
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 505,
+          "samples_ms": [
+            1.530543,
+            1.501509,
+            1.529201
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 606,
+          "samples_ms": [
+            1.538729,
+            1.632075,
+            1.554017
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 707,
+          "samples_ms": [
+            1.518751,
+            1.566912,
+            1.673753
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 808,
+          "samples_ms": [
+            1.601357,
+            1.577612,
+            1.511757
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 909,
+          "samples_ms": [
+            1.58245,
+            2.32543,
+            1.918863
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1010,
+          "samples_ms": [
+            1.509813,
+            1.54508,
+            1.521756
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1111,
+          "samples_ms": [
+            2.89953,
+            1.596166,
+            1.573392
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1212,
+          "samples_ms": [
+            1.555589,
+            1.620291,
+            1.799939
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1313,
+          "samples_ms": [
+            1.51345,
+            1.507639,
+            1.518639
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1414,
+          "samples_ms": [
+            1.550679,
+            1.634487,
+            1.498081
+          ]
+        },
+        {
+          "n": 1000000,
+          "data_seed": 1515,
+          "samples_ms": [
+            1.661929,
+            1.812021,
+            1.705069
+          ]
+        }
+      ],
+      "statistics": {
+        "count": 15,
+        "min_ms": 1.51345,
+        "median_ms": 1.566912,
+        "mean_ms": 1.5998172666666666,
+        "p95_ms": 1.7692071999999996,
+        "stdev_ms": 0.10133283967448674,
+        "median_ci95_low_ms": 1.550679,
+        "median_ci95_high_ms": 1.620291,
+        "confidence_unit_count": 15,
+        "technical_repeat_count": 45,
+        "raw_sample_median_ms": 1.566912
+      },
+      "confidence_unit": "per-data-seed median"
+    }
+  ]
+}

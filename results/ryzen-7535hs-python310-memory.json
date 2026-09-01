@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "method": "fresh subprocess per implementation; parent polls Linux VmRSS",
+  "environment": {
+    "python": "3.10.12",
+    "implementation": "CPython",
+    "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.35",
+    "machine": "x86_64",
+    "processor": "AMD Ryzen 5 7535HS with Radeon Graphics",
+    "logical_cpu_count": 12,
+    "memory_total_kib": 32084196,
+    "cache_hierarchy_cpu0": [
+      {
+        "level": "1",
+        "type": "Data",
+        "size": "32K"
+      },
+      {
+        "level": "1",
+        "type": "Instruction",
+        "size": "32K"
+      },
+      {
+        "level": "2",
+        "type": "Unified",
+        "size": "512K"
+      },
+      {
+        "level": "3",
+        "type": "Unified",
+        "size": "16384K"
+      }
+    ],
+    "numpy": "2.2.6",
+    "numba": "0.67.0",
+    "llvmlite": "0.49.0",
+    "numba_threads": 1,
+    "numba_threading_layer": "not initialized",
+    "cpu_affinity": [
+      2
+    ],
+    "affinity_topology": [
+      {
+        "logical_cpu": 2,
+        "core_id": 1,
+        "package_id": 0
+      }
+    ]
+  },
+  "configuration": {
+    "algorithms": [
+      "findDuplicate_bit",
+      "findDuplicate_bit_python_numpy",
+      "findDuplicate_bit_numpy",
+      "findDuplicate_bit_numba"
+    ],
+    "size": 1000000,
+    "seed": 303,
+    "repeats": 2,
+    "json": "results/ryzen-7535hs-python310-memory.json"
+  },
+  "measurements": [
+    {
+      "algorithm": "findDuplicate_bit",
+      "algorithm_family": "bit_counting",
+      "execution_model": "cpython",
+      "input_representation": "python.list[int]",
+      "n": 1000000,
+      "data_seed": 303,
+      "repeats": 2,
+      "input_logical_bytes": 4000004,
+      "baseline_rss_kib": 137152,
+      "peak_rss_kib": 137152,
+      "peak_increment_kib": 0,
+      "elapsed_ms": 1584.197682,
+      "sampling_interval_ms": 1.0
+    },
+    {
+      "algorithm": "findDuplicate_bit_python_numpy",
+      "algorithm_family": "bit_counting",
+      "execution_model": "cpython",
+      "input_representation": "numpy.int32",
+      "n": 1000000,
+      "data_seed": 303,
+      "repeats": 2,
+      "input_logical_bytes": 4000004,
+      "baseline_rss_kib": 102024,
+      "peak_rss_kib": 102028,
+      "peak_increment_kib": 4,
+      "elapsed_ms": 3386.845584,
+      "sampling_interval_ms": 1.0
+    },
+    {
+      "algorithm": "findDuplicate_bit_numpy",
+      "algorithm_family": "bit_counting",
+      "execution_model": "numpy",
+      "input_representation": "numpy.int32",
+      "n": 1000000,
+      "data_seed": 303,
+      "repeats": 2,
+      "input_logical_bytes": 4000004,
+      "baseline_rss_kib": 101752,
+      "peak_rss_kib": 109672,
+      "peak_increment_kib": 7920,
+      "elapsed_ms": 174.531404,
+      "sampling_interval_ms": 1.0
+    },
+    {
+      "algorithm": "findDuplicate_bit_numba",
+      "algorithm_family": "bit_counting",
+      "execution_model": "numba",
+      "input_representation": "numpy.int32",
+      "n": 1000000,
+      "data_seed": 303,
+      "repeats": 2,
+      "input_logical_bytes": 4000004,
+      "baseline_rss_kib": 173176,
+      "peak_rss_kib": 173176,
+      "peak_increment_kib": 0,
+      "elapsed_ms": 3.560727,
+      "sampling_interval_ms": 1.0
+    }
+  ]
+}

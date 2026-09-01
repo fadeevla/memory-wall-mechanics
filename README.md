@@ -1,191 +1,280 @@
-## Usage
+# Python Performance: From Objects to Memory Access
+
+This repository studies how interpreter overhead, representation, allocation,
+memory locality, and compilation affect a small duplicate-finding problem. It then
+applies the same measurement discipline to batched embedding bags, a common ML
+inference operation. It is an experimental study, not a claim that one algorithm is
+universally fastest.
+
+## Questions investigated
+
+- What changes when identical Python bytecode iterates over boxed list integers or
+  NumPy scalar objects?
+- How much time is removed by NumPy vectorization and Numba compilation?
+- When does vectorization allocate large intermediate arrays?
+- Do independent input permutations change the conclusion?
+- Can compiler output and hardware counters support a proposed explanation?
+- Does fusing embedding gather and reduction avoid a materialized tensor?
+
+For a deeper defense of the mechanisms, evidence, and experimental boundaries, see
+the [Python and ML systems technical analysis](docs/technical-analysis.md).
+
+## Install and test
+
 ```bash
-# 1. Setup system runtime (HugePages, perf permissions, performance governor)
-sudo ./bench/01_setup_runtime.sh
-
-# 2. (Optional) Setup isolated GRUB CPU cores
-# sudo ./bench/02_setup_grub_isolation.sh
-
-# 3. Run benchmark suite
-./bench/run.sh main.py --sizes 10 100000 1000000 10000000 100000000
-
-# 4. Profile hardware counters (dTLB misses, L1/L3 cache misses, IPC)
-./bench/run_perf.sh findDuplicate_floyd_numba 10000000
-./bench/run_perf.sh findDuplicate_bit_numba_prange 10000000
+python3 -m venv .venv
+.venv/bin/python -m pip install --upgrade pip setuptools
+.venv/bin/python -m pip install -e '.[dev]'
+.venv/bin/python -m pytest -q
 ```
 
-## Abstract
+To recreate the package versions used for the published controlled experiment,
+install with Python 3.10.12 and
+`-c constraints/controlled-python310.txt`. The embedding artifact has a separate
+`constraints/embedding-python310-cu124.txt` because it used a different NumPy and
+PyTorch environment.
 
-Empirical profiling and benchmarking on large arrays ($N=10^8$) demonstrate that high-load system performance is fundamentally constrained by memory hierarchies and bandwidth limits rather than abstract Big-O mathematical complexity. Mathematically optimal $O(N)$ algorithms relying on random memory access degrade catastrophically due to L3 cache exhaustion and Translation Lookaside Buffer (TLB) misses. Conversely, sequentially accessing data using an $O(N \log N)$ bit-manipulation approach outperforms them by keeping hardware prefetchers and vector registers fully fed.
-
-  
-
-## 1. Theoretical Baselines & CPython Interpreter Bottlenecks
-
-Performance in high-load systems is constrained by memory hierarchies rather than pure mathematical complexity. Initial baseline implementations expose severe interpreter overheads:
-  
-
-- **Hash Table (`set`):** Exhibits $O(N)$ time and space complexity. It is fast on small arrays, but suffers from dynamic allocation of `PyObject` structures and re-hashing overhead under collisions.
-    
-- **Sorting (`sort`):** Provides a data-independent, stable execution time through sequential memory access, though it mutates the input array and incurs sorting costs.
-
-
-## 2. The $O(1)$ Space Illusion: Pointer Chasing & TLB Exhaustion
-
-Graph cycle-detection algorithms represent theoretical ideals that break down under silicon realities:
-
-- **Floyd’s Cycle-Finding Algorithm (`floyd`):** Operates in $O(N)$ time and $O(1)$ space without auxiliary allocations.
-    
-- **The Pointer Chasing Bottleneck:** Random memory lookups (`nums[nums[slow]]`) destroy hardware branch prediction and prefetcher efficiency.
-    
-- **TLB and Cache Collapse:** On massive datasets ($N=10^8$), random jumps overwhelm the Translation Lookaside Buffer (TLB), triggering cascading Page Walks and up to $95.6\%$ dTLB load misses.
-    
-
-```python
-def findDuplicate_floyd(nums):
-    slow = nums[0]
-    fast = nums[nums[0]]
-    while slow != fast:
-        slow = nums[slow]
-        fast = nums[nums[fast]]
-    return slow
+```bash
+.venv/bin/python -m pip install \
+  -c constraints/controlled-python310.txt -e '.[dev]'
 ```
 
-## 3. Cache-Locality, SIMD, and Branchless Execution
+PyTorch is optional because it is a large dependency:
 
-To bypass the memory wall, algorithms must prioritize strict sequential access patterns and hardware empathy:
-
-- **Sequential Bit Manipulation:** Scanning arrays bit-by-bit ensures contiguous memory reads, allowing CPU hardware prefetchers to operate at maximum efficiency.
-    
-- **Branchless Design vs. Branch Divergence:** Avoiding dynamic short-circuit loops prevents branch divergence, enabling compilers to apply SIMD (AVX2) vectorization.
-    
-- **The Memory Blow-Up Trap:** Full NumPy vectorization via broadcasting materializes large $O(N \log N)$ matrices in RAM, mirroring the memory explosion of standard Transformer Attention mechanisms and requiring Kernel Fusion (comparable to FlashAttention).
-        
-
-```python
-@njit
-def findDuplicate_bit_optimal_numba(arr: np.ndarray) -> int:
-    N = len(arr) - 1
-    max_bit = 0
-    temp_n = N
-    while temp_n > 0:
-        max_bit += 1
-        temp_n >>= 1
-
-    count_nums = np.zeros(max_bit, dtype=np.int32)
-    for i in range(len(arr)):
-        temp = arr[i]
-        for bit in range(max_bit):
-            count_nums[bit] += temp & 1
-            temp >>= 1
-
-    duplicate = 0
-    for bit in range(max_bit):
-        period = 1 << (bit + 1)
-        half_period = 1 << bit
-        full_cycles = (N + 1) // period
-        remainder = (N + 1) % period
-        count_base = (full_cycles * half_period) + max(0, remainder - half_period)
-        if count_nums[bit] > count_base:
-            duplicate |= (1 << bit)
-    return duplicate
+```bash
+.venv/bin/python -m pip install -e '.[ml]'
 ```
 
-## 4. Bare-Metal Scaling & Constructive Cache Sharing
+CI runs the complete non-PyTorch suite on Python 3.9 and 3.12. The current suite
+covers every registered implementation, input preservation, structured metadata,
+multi-seed serialization, isolated memory measurement, and batched embeddings.
 
-Executing multi-threaded JIT kernels reveals the physical limits of motherboard data buses and CPU core topologies:
+## Python runtime explainer
 
-- **Defeating SMT (Hyper-Threading):** Logical threads contend for shared execution units and memory controllers in memory-bound tasks; scaling requires pinning processes to physical cores.
-    
-- **OS Jitter Isolation:** Reserving control plane cores for the operating system prevents background interrupts from desynchronizing working threads.
-    
-- **Constructive Cache Sharing:** Synchronized multi-threaded execution allows parallel workers to pull cached lines directly from the shared L3 cache rather than external RAM, pushing effective throughput beyond physical motherboard limits.
-    
+[`docs/python-runtime-report.md`](docs/python-runtime-report.md) connects the timing
+results to observable runtime details: `dis` bytecode, `sys.getsizeof`, ndarray dtype
+and strides, separate fresh-process `tracemalloc` and RSS measurements, and a
+two-core GIL experiment.
 
-```python
-@njit(parallel=True)
-def findDuplicate_bit_numba_prange(nums):
-    n = len(nums) - 1
-    max_num = n
-    max_bit = 0
-    while max_num > 0:
-        max_bit += 1
-        max_num >>= 1
+On the recorded CPython 3.10 build, 10,000 referenced integers plus their list
+container occupied about nine times the bytes of an owning `int32` ndarray. Two
+CPU-bound Python tasks were slower in two Python threads than sequentially, while an
+equivalent Numba `prange` reduction achieved modest native parallel speedup. The
+report stores raw evidence in
+[`results/ryzen-7535hs-python-runtime.json`](results/ryzen-7535hs-python-runtime.json)
+and explains why tracing and RSS must be measured in separate processes.
 
-    duplicate = 0
-    for bit in prange(max_bit):
-        mask = 1 << bit
-        period = 1 << (bit + 1)
-        half_period = 1 << bit
-        full_cycles = (n + 1) // period
-        remainder = (n + 1) % period
-        base_count = (full_cycles * half_period) + max(0, remainder - half_period)
-
-        nums_count = 0
-        for i in range(len(nums)):
-            if (nums[i] & mask) != 0:
-                nums_count += 1
-
-        if nums_count > base_count:
-            duplicate += mask
-    return duplicate
+```bash
+NUMBA_NUM_THREADS=2 taskset -c 2,4 .venv/bin/python \
+  bench/explain_python_runtime.py \
+  --json results/my-host-python-runtime.json \
+  --markdown docs/python-runtime-report.md
 ```
-### **Hardware Validation: ASUS FA507NV & Constructive Cache Sharing**
 
-- **Hardware Specifications:** Benchmarked on an ASUS TUF Gaming A15 (model FA507NV-LP110W) featuring an **AMD Ryzen 5 7535HS** processor (16 MB L3 cache) and dual-channel **DDR5-4800** SO-DIMM RAM.
-    
-- **The Theoretical RAM Limit:** The physical memory bus bandwidth for dual-channel DDR5-4800 has a strict theoretical ceiling of **76.8 GB/s**.
-    
-- **The Effective Throughput Phenomenon:** Under isolated multi-threaded execution (`NUMBA_NUM_THREADS=5` on 5 physical cores), the benchmark recorded an effective throughput of **92.6 GB/s** (surpassing the hardware RAM limit by ~20%).
-    
-- **Mechanics of Cache Overlap:** Because threads advance through the contiguous array in strict lockstep, the memory controller fetches a 64-byte cache line into the L3 cache for the leading thread. Subsequent threads intercept those same bytes directly from the L3 ring bus rather than hitting external RAM, creating an effective throughput multiplier identical to the mechanics behind **Multi-Query Attention (MQA)** and **Grouped-Query Attention (GQA)** in modern LLMs.
+### CPython 3.14 free-threading
 
-## **5. Architectural Anomalies & Anti-Patterns: Array Mutation (`sign`)**
+A separate standard-library-only experiment runs identical bytecode under matching
+CPython 3.14.6 standard and free-threaded builds. Using no third-party extensions
+ensures an imported module cannot silently re-enable the GIL.
 
-The array mutation approach achieves $O(1)$ space complexity by marking visited nodes using sign bits. However, in CPython, it turns into an anti-pattern:
+On two distinct physical cores, the standard build completed two threaded tasks with
+0.91x the throughput of sequential execution. The free-threaded build achieved 1.94x
+throughput, while one free-threaded task was 48.2% slower than the matching standard
+build. This exposes the trade-off: CPU-bound Python threads can run in parallel, but
+thread-safe runtime machinery can increase single-thread cost.
 
-- **The PyObject Allocation Trap:** Python numbers are immutable. Negating values (`-nums[index]`) forces heap allocations for new `PyObject` instances on every iteration.
-    
-- **GC Thrashing:** Mass allocation overloads generations of the Garbage Collector, causing frequent Stop-the-World pauses.
-    
-- **Execution Variance:** Early exit paths cause high P99 latency dispersion based on data distribution.
-### Benchmark Performance Overview ($N=10^8$ Threads/Cores Context)
+See the generated [free-threading report](docs/python314-free-threading.md) and
+[raw samples](results/ryzen-7535hs-python314-free-threading.json).
 
-| **Algorithm / Configuration**      | $N=10^1$  | $N=10^5$ | $N=10^6$  | $N=10^7$   | $N=10^8$        |
-| ---------------------------------- | --------- | -------- | --------- | ---------- | --------------- |
-| **findDuplicate_bit_numba_prange** | 419.89 ms | 3.16 ms  | 0.89 ms   | 10.54 ms   | **116.62 ms**   |
-| **findDuplicate_bit_numba**        | 97.81 ms  | 0.12 ms  | 1.53 ms   | 34.87 ms   | **448.42 ms**   |
-| **findDuplicate_set**              | 0.00 ms   | 4.66 ms  | 104.44 ms | 2335.17 ms | **31414.68 ms** |
-| **findDuplicate_floyd**            | 0.00 ms   | 3.79 ms  | 105.97 ms | 5707.12 ms | **64150.53 ms** |
-```python
-def findDuplicate_sign(nums):
-    for i in range(len(nums)):
-        index = abs(nums[i]) - 1
-        if nums[index] < 0:
-            return abs(nums[i])
-        nums[index] = -nums[index]
+```bash
+taskset -c 2,4 .venv/bin/python bench/compare_free_threading.py \
+  --interpreters python3.14 python3.14t \
+  --json results/my-host-python314-free-threading.json \
+  --markdown docs/python314-free-threading.md
 ```
-## **6. Comprehensive Performance Overview ($N=10^8$)**
 
-|**Algorithm**|**Time / Space Complexity**|**Execution Time (N=108)**|**Memory Locality**|**Primary Architectural Bottleneck**|
-|---|---|---|---|---|
-|**sign**|$O(N) / O(1)$|$\approx 35,700$ ms|Random Access|`PyObject` heap allocations & GC thrashing|
-|**set**|$O(N) / O(N)$|$\approx 31,400$ ms|Hashing|Dynamic memory fragmentation|
-|**floyd**|$O(N) / O(1)$|$\approx 64,150$ ms|Pointer Chasing|TLB & Cache Misses|
-|**sort**|$O(N \log N) / O(1)$|$\approx 46,950$ ms|Sequential|Element permutation overhead|
-|**bit_numba**|$O(N \log N) / O(1)$|$\approx 400$ ms|Sequential|Single-core RAM bandwidth limit|
-|**bit_numba_prange**|$O(N \log N) / O(1)$|**116.62 ms**|Sequential (Cache Overlap)|Physical memory controller limit (Memory Wall)|
+## Controlled execution and representation matrix
 
-## **7. From Bare-Metal CPU Profiling to GPU Triton Kernels**
+The central comparison holds the bit-counting algorithm constant:
 
-The low-level hardware phenomena observed in these CPU benchmarks directly translate to designing high-performance Triton and CUDA kernels for LLM infrastructure:
+| Implementation | Execution | Input representation |
+| --- | --- | --- |
+| `findDuplicate_bit` | CPython loop | `list[int]` |
+| `findDuplicate_bit_python_numpy` | same CPython function | `numpy.int32` array |
+| `findDuplicate_bit_numpy` | NumPy operations | `numpy.int32` array |
+| `findDuplicate_bit_numba` | compiled Numba loop | `numpy.int32` array |
 
-- **Hardware Event Profiling:** Utilizing tools like `perf stat` to track TLB and cache misses identifies memory-bound execution states, guiding memory layout optimizations.
-    
-- **Kernel Fusion:** Avoiding intermediate memory allocations by aggregating computations within L1/L2 caches mirrors the architectural principles behind FlashAttention.
-    
-- **Warp Divergence:** Data-dependent branching within GPU execution warps mirrors CPU branch divergence, degrading Tensor Core utilization.
-    
-- **Constructive Cache Sharing:** Synchronized parallel fetches mapped through L3 cache overlap form the hardware basis for attention optimizations like Multi-Query Attention (MQA) and Grouped-Query Attention (GQA).
-    
-- **Memory-Bandwidth Bounds:** Auto-regressive generation is strictly limited by memory bandwidth; just as CPUs saturate system buses during sequential passes, GPUs require High Bandwidth Memory (HBM) and quantization methods (e.g., INT4/AWQ) to compress memory traffic.
+The same CPython function object is registered for the first two variants. This
+isolates the cost of iteration and scalar conversion when moving from a list to an
+ndarray without vectorizing the operation. Algorithm metadata—not naming
+conventions—controls representation preparation, compilation warmup, reporting, and
+temporary-memory guards.
+
+```bash
+NUMBA_NUM_THREADS=1 taskset -c 2 .venv/bin/python main.py \
+  --algorithms findDuplicate_bit findDuplicate_bit_python_numpy \
+    findDuplicate_bit_numpy findDuplicate_bit_numba \
+  --sizes 1000 10000 100000 1000000 \
+  --repeats 3 \
+  --data-seeds 101 202 303 404 505 606 707 808 909 1010 1111 1212 1313 1414 1515 \
+  --seed 777 --no-hugepages --cache-flush-mib 64 \
+  --json results/my-host-controlled.json
+```
+
+Each data seed creates an independent permutation. Execution order is randomized
+within each repeat. JSON retains every sample and reports a deterministic 95%
+percentile-bootstrap interval across per-seed medians. The displayed point estimate
+is the median of those same seed medians; repeat-level samples remain available as
+technical replicates. Fifteen seeds improve input coverage but still do not turn the
+interval into a portable population bound.
+
+## Published experiment
+
+The checked-in experiment was run on one core of an AMD Ryzen 5 7535HS, with one
+Numba thread, ordinary pages, fifteen data seeds, and three samples per seed. A 64 MiB
+buffer was read before each timed call as a best-effort LLC eviction step; this makes
+the cache policy explicit but does not guarantee a completely cold hierarchy. Full
+host, package, cache, affinity, configuration, execution-order, and raw-sample metadata are
+in [`results/ryzen-7535hs-python310-controlled.json`](results/ryzen-7535hs-python310-controlled.json).
+
+![Controlled execution and representation results](results/ryzen-7535hs-python310-controlled.svg)
+
+At `N=1,000,000`, median latency was 755.1 ms for the Python list, 1638.9 ms for the
+same Python code over ndarray scalars, 10.89 ms for NumPy, and 1.57 ms for Numba.
+The ndarray result demonstrates that packed storage alone does not make a Python
+scalar loop fast: per-element ndarray scalar conversion made this loop about 2.2x
+slower than list iteration. NumPy was about 69x faster than the list loop, while the
+compiled Numba loop was about 482x faster. These are results from this host and
+configuration, not portable constants.
+
+The complete interpretation and limitations are in
+[`results/ryzen-7535hs-analysis.md`](results/ryzen-7535hs-analysis.md).
+
+## Isolated memory measurement
+
+Memory is measured separately because a process-wide high-water mark cannot be
+attributed to one implementation. The harness starts a fresh worker for each
+algorithm, prepares its input and initializes compiled kernels, then monitors Linux
+`VmRSS` externally at 1 ms intervals while the measured region runs.
+
+```bash
+taskset -c 2 .venv/bin/python bench/measure_memory.py \
+  --algorithms findDuplicate_bit findDuplicate_bit_python_numpy \
+    findDuplicate_bit_numpy findDuplicate_bit_numba \
+  --size 1000000 --seed 303 --repeats 2 \
+  --json results/my-host-memory.json
+```
+
+The published run observed about 7.7 MiB incremental peak RSS for the NumPy loop and
+no resolvable additional RSS for Numba. A 1 ms polling sampler can miss very
+short-lived allocations, and sub-page differences should be treated as zero rather
+than precise allocation measurements.
+
+## Batched ML workload
+
+The embedding benchmark creates multiple non-empty bags with a shared `float32`
+table and `int64` indices. NumPy gathers a `(lookups, dimension)` tensor before
+reducing it; Numba fuses gather and accumulation; PyTorch uses its CPU
+`embedding_bag` kernel on tensors created outside the timed region.
+
+```bash
+NUMBA_NUM_THREADS=1 taskset -c 2 python3 bench/run_embedding.py \
+  --rows 100000 --dimension 128 --bags 256 --bag-size 128 \
+  --repeats 3 \
+  --data-seeds 101 202 303 404 505 606 707 808 909 1010 1111 1212 1313 1414 1515 \
+  --order-seed 777 --locality random --torch-threads 1 \
+  --cache-flush-mib 64 \
+  --json results/my-host-embedding.json
+```
+
+The published artifacts use fifteen seeds. On the random-access run, median latency
+was 999.8 ms for Python loops, 12.17 ms for NumPy gather/reduce, 1.91 ms for fused
+Numba, and 1.31 ms for PyTorch. The gathered intermediate is 16 MiB. A paired
+same-seed analysis found no sorting benefit: sorting was measurably slower for NumPy
+(+6.23%) and Python loops (+2.32%), while the Numba and PyTorch direction remained
+unresolved. See the [paired locality report](results/ryzen-7535hs-python310-embedding-locality-paired.md).
+
+Numerical differences are measured against a float64 reference. Reduction order
+differs between implementations, so the benchmark reports maximum absolute and
+relative error rather than assuming bitwise equality.
+
+## Compiler and hardware evidence
+
+Capture the exact LLVM IR or assembly produced for the current environment:
+
+```bash
+.venv/bin/python bench/inspect_numba.py findDuplicate_bit_numba \
+  --kind llvm --output results/my-host-bit-numba.ll
+```
+
+The published LLVM contains a `vector.body`, four-lane wide `i32` loads, vector
+shifts, and vector additions in the hot counting loop. The complete IR and a metadata
+sidecar with its signature, environment, and SHA-256 are checked in. Search markers
+alone are not proof; the loop body must be inspected.
+
+For hardware counters, imports, allocation, shuffling, and JIT warmup are completed
+in a fresh worker before `perf` attaches to that blocked process:
+
+```bash
+CPU_SET=2 NUMBA_NUM_THREADS=1 \
+  PERF_OUTPUT=results/floyd-perf.csv \
+./bench/run_perf.sh findDuplicate_floyd_numba 10000000 5
+```
+
+After capturing comparable Floyd and sequential bit-counting runs, normalize them
+with `bench/compare_perf.py`. The current checked-in case study does not include a
+counter artifact because its capture host denied PMU access at
+`perf_event_paranoid=4`; the command and analysis design are not presented as
+measured evidence.
+
+```bash
+.venv/bin/python bench/compare_perf.py \
+  results/floyd-perf.csv results/bit-perf.csv \
+  --json results/perf-comparison.json \
+  --markdown results/perf-comparison.md
+```
+
+Generic cache events do not measure DRAM bandwidth. CPU-specific memory-controller
+events must be selected from `perf list`. Logical bytes scanned are not physical
+DRAM traffic, and timing alone does not establish cache, TLB, or SIMD causality.
+
+## Other implementations
+
+The registry also includes sorting, set lookup, value-domain binary search, Floyd
+cycle detection, temporary sign marking, a single-pass bit counter, a fully
+broadcast NumPy variant, parallel Numba, and Numba Floyd. Comparisons across different
+algorithm families intentionally mix algorithmic and execution-model effects; use
+the controlled matrix for causal claims about representation and execution.
+
+The broadcast variant is guarded by an estimated 1 GiB intermediate by default.
+Dataset construction, conversion, and compilation remain outside normal timing.
+
+## Optional host administration
+
+Normal development and published timing do not require machine-wide changes.
+Potentially disruptive scripts are isolated under [`bench/host_admin/`](bench/host_admin/)
+and have explicit preview/status and restoration paths. Review them before using
+`sudo`; they are not called by `run.sh`, `run_perf.sh`, CI, or tests.
+
+## Interpretation boundaries
+
+Floyd is O(N) time and O(1) space, but dependent accesses can limit prefetching.
+Sequential bit counting performs O(N log N) logical work and may still win after
+compilation. CPython complexity statements use the conventional word-RAM model;
+Python integers themselves are variable-sized objects. Python integer negation may
+allocate, but integers are not tracked by cyclic GC.
+
+Results should not be compared across different representations, thread counts,
+affinities, package versions, page configurations, or hosts as if only the algorithm
+changed. The published data is a documented case study, not a universal ranking.
+
+## Repository layout
+
+- `src/duplicate_find/algorithms/`: implementations and structured registry.
+- `src/duplicate_find/benchmark/`: timing, confidence intervals, metadata, and RSS measurement.
+- `src/duplicate_find/ml/`: batched embedding-bag kernels.
+- `bench/`: benchmark, plot, compiler-inspection, and `perf` entry points.
+- `bench/host_admin/`: optional machine-wide Linux configuration.
+- `tests/`: correctness and benchmark-contract tests.
+- `docs/`: runtime reports and deeper technical analysis.
+- `results/`: raw experimental artifacts, plots, compiler evidence, and interpretation.
